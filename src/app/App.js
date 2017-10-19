@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-import Channel from './../components/Channel';
+import ChannelForm from './../components/ChannelForm';
+import ChannelList from './../components/ChannelList';
 import './App.css';
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <div className="App">
         <div className="container">
-          <Channel />
+          <table className="table table-hover">
+            <ChannelForm />
+            <ChannelList />
+          </table>
         </div>
       </div>
     );
   }
-}
-
-export default App;
+};

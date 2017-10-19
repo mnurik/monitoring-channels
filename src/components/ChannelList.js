@@ -1,24 +1,40 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import ChannelItem from "./ChannelItem";
-import { fetchChannels } from "./../utils/services";
+import { fetchChannels, deleteChannel } from "./../utils/services";
 
 class ChannelList extends Component {
-    state = {
-        channels: [{ id: 1, name: 'test', uid: "some url", status: "normal" }]
-    }
 
-    componentDidMount() {
-        fetchChannels()
-            .then(channels => this.setState(channels))
+    // componentDidMount() {
+    //     fetchChannels()
+    //         .then(channels => this.setState(channels))
+    // }
+
+    handledeleteChannel = (id) => {
+        deleteChannel(id);
+        this.setState(prevState => ({
+            channels: prevState.channels
+                .filter(channel => channel.id !== id)
+        }));
     }
 
     render() {
+        console.log('====================================');
+        console.log(this.props);
+        console.log('====================================');
         return (
             <tbody>
-                {this.state.channels.map(channel => <ChannelItem key={channel.id} channel={channel} />)}
+                {this.props.channels.map(channel => <ChannelItem
+                    key={channel.id}
+                    channel={channel}
+                    onDeleteChannel={this.handledeleteChannel} />)}
             </tbody>
         );
     }
 }
 
-export default ChannelList;
+const mapStateToProps = (state) => ({
+    channels: state.channels
+});
+
+export default connect(mapStateToProps)(ChannelList);

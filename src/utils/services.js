@@ -24,3 +24,18 @@ export function callApi(url, config = {}) {
 export const fetchChannels = () => {
     return callApi('');
 };
+
+export const saveChannel = (data) => {
+    return callApi('kelenterApi', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+};
+
+export const deleteChannel = () => {
+    return callApi('');
+};

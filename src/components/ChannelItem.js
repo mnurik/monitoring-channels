@@ -1,43 +1,75 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Button from "./Button";
 import Input from "./Input";
+import { saveChannel } from "./../utils/services";
 
 class ChannelItem extends Component {
+
+    static propTypes = {
+        channel: PropTypes.object.isRequired,
+        onDeleteChannel: PropTypes.func.isRequired
+    }
+
     state = {
+        channel: this.props.channel,
         editing: false
     }
 
-    handleDoubleClick = () => {
+    handleEditingClick = () => {
         this.setState({ editing: true })
     }
 
-    handleSave = (id, text) => {
-        this.setState({ editing: false })
+    handleChange = (key, value) => {
+        this.setState({ channel: { ...this.state.channel, [key]: value } });
+    }
+
+    handleSave = () => {
+        const { id, name, url } = this.state.channel;
+        saveChannel({ id, name, url });
+        this.setState({ editing: false });
+    }
+
+    handleDeleteClick = () => {
+        const { id } = this.state.channel;
+        this.props.onDeleteChannel(id);
+    }
+
+    handleStartMonitoring = () => {
+
+    }
+
+    handleStopMonitoring = () => {
+
     }
 
     render() {
-        const { channel } = this.props;
         return (
-            <tr>
+            <tr onDoubleClick={this.handleEditingClick}>
                 <td>
                     {this.state.editing ?
-                        <Input value={channel.name} onSave={(text) => this.handleSave(channel.id, text)} />
-                        : <span onDoubleClick={this.handleDoubleClick}>{channel.name}</span>}
+                        <Input value={this.state.channel.name} onChange={(value) => this.handleChange("name", value)} />
+                        : this.state.channel.name}
                 </td>
                 <td>
                     {this.state.editing ?
-                        <Input value={channel.uid} onSave={(text) => this.handleSave(channel.id, text)} />
-                        : <span onDoubleClick={this.handleDoubleClick}>{channel.uid}</span>}
+                        <Input value={this.state.channel.url} onChange={(value) => this.handleChange("url", value)} />
+                        : this.state.channel.url}
                 </td>
+                <td>{this.state.channel.status}</td>
                 <td>
-                    {this.state.editing ?
-                        <Input value={channel.status} onSave={(text) => this.handleSave(channel.id, text)} />
-                        : <span onDoubleClick={this.handleDoubleClick}>{channel.status}</span>}
+                    <div className="btn-group">
+                        <Button className="primary" onClick={this.handleStartMonitoring}>Start</Button>
+                        <Button className="warning" onClick={this.handleStopMonitoring}>Stop</Button>
+                    </div>
                 </td>
                 <td>
                     <div className="btn-group">
-                        <Button className="info">Dəyiş</Button>
-                        <Button className="danger">Sil</Button>
+                        {this.state.editing ?
+                            <Button className="info" onClick={this.handleSave}>Yadda saxla</Button>
+                            : <Button className="info" onClick={this.handleEditingClick}>Dəyiş</Button>
+                        }
+                        <Button className="danger" onClick={this.handleDeleteClick}>Sil</Button>
                     </div>
                 </td>
             </tr>
