@@ -1,0 +1,4 @@
+export const LOAD_CHANNELS = "LOAD_CHANNELS";
+export const ADD_CHANNEL = "ADD_CHANNEL";
+export const DELETE_CHANNEL = "DELETE_CHANNEL";
+export const EDIT_CHANNEL = "EDIT_CHANNEL";

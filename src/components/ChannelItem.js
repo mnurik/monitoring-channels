@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from "./Button";
 import Input from "./Input";
-import { saveChannel } from "./../utils/services";
+import { saveChannel, deleteChannel } from "./../utils/services";
+import { destroyChannel } from "./../actions/actions";
 import './ChannelItem.css';
 
 class ChannelItem extends Component {
 
     static propTypes = {
-        channel: PropTypes.object.isRequired,
-        onDeleteChannel: PropTypes.func.isRequired
+        channel: PropTypes.object.isRequired
     }
 
     state = {
-        channel: this.props.channel,
         editing: false
     }
 
@@ -26,56 +26,47 @@ class ChannelItem extends Component {
     }
 
     handleSave = () => {
-        const { id, name, url } = this.state.channel;
+        const { id, name, url } = this.props.channel;
         saveChannel({ id, name, url });
         this.setState({ editing: false });
     }
 
     handleDeleteClick = () => {
-        const { id } = this.state.channel;
-        this.props.onDeleteChannel(id);
-    }
-
-    handleStartMonitoring = () => {
-
-    }
-
-    handleStopMonitoring = () => {
-
+        const { id } = this.props.channel;
+        deleteChannel()
+            .then(() => this.props.destroyChannel(id));
     }
 
     render() {
-        const { channel } = this.state;
+        const { channel } = this.props;
         return (
-            <div className="panel panel-success">
-                <div className="panel-heading">
+            <div className={`panel panel-${channel.IsSuccess ? "success" : "danger"}`}>
+                <div className="panel-heading" onDoubleClick={this.handleEditingClick}>
                     {this.state.editing ?
-                        <Input value={this.state.channel.name} onChange={(value) => this.handleChange("name", value)} />
-                        : this.state.channel.name}
+                        <Input value={channel.Name} onChange={(value) => this.handleChange("name", value)} />
+                        : channel.Name}
                 </div>
                 <div className="panel-body">
-                    <img src={channel.imageUrl} alt={channel.imageUrl} />
+                    <img src={channel.ScreanShotUrl} alt={channel.ScreanShotUrl} />
                 </div>
                 <div className="panel-footer">
-                    <div onDoubleClick={this.handleEditingClick}>
-                        <div className="btn-group">
-                            {this.state.editing ?
-                                <Button className="trick" onClick={this.handleSave}>
-                                    <i className="fa fa-pencil" />
-                                </Button>
-                                : <Button className="info btn-sm" onClick={this.handleEditingClick}>
-                                    <i className="fa fa-pencil" />
-                                </Button>
-                            }
-                            <Button className="danger btn-sm" onClick={this.handleDeleteClick}>
-                                <i className="fa fa-trash" />
+                    <div className="btn-group">
+                        {this.state.editing ?
+                            <Button className="success btn-sm" onClick={this.handleSave}>
+                                <i className="fa fa-check" />
                             </Button>
-                        </div>
+                            : <Button className="info btn-sm" onClick={this.handleEditingClick}>
+                                <i className="fa fa-pencil" />
+                            </Button>
+                        }
+                        <Button className="danger btn-sm" onClick={this.handleDeleteClick}>
+                            <i className="fa fa-trash" />
+                        </Button>
                     </div>
                 </div>
             </div>
         );
-    }
+    } IpList
 }
 
-export default ChannelItem;
+export default connect(null, { destroyChannel })(ChannelItem);

@@ -22,7 +22,7 @@ export function callApi(url, config = {}) {
 };
 
 export const fetchChannels = () => {
-    return callApi('');
+    return callApi('http://10.50.50.197:3169/api/monitoring/channelList');
 };
 
 export const saveChannel = (data) => {

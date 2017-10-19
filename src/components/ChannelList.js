@@ -1,31 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import ChannelItem from "./ChannelItem";
-import { fetchChannels, deleteChannel } from "./../utils/services";
+import { fetchChannels } from "./../utils/services";
 import './ChannelList.css';
+import { loadChannels } from "./../actions/actions";
 
 class ChannelList extends Component {
 
-    // componentDidMount() {
-    //     fetchChannels()
-    //         .then(channels => this.setState(channels))
-    // }
-
-    handledeleteChannel = (id) => {
-        deleteChannel(id);
-        this.setState(prevState => ({
-            channels: prevState.channels
-                .filter(channel => channel.id !== id)
-        }));
+    componentDidMount() {
+        fetchChannels()
+            .then(res => this.props.loadChannels(res.Result))
     }
 
     render() {
         return (
             <div className="channel">
                 {this.props.channels.map(channel => <ChannelItem
-                    key={channel.id}
+                    key={channel.Id}
                     channel={channel}
-                    onDeleteChannel={this.handledeleteChannel} />)}
+                />)}
             </div>
         );
     }
@@ -35,4 +28,4 @@ const mapStateToProps = (state) => ({
     channels: state.channels
 });
 
-export default connect(mapStateToProps)(ChannelList);
+export default connect(mapStateToProps, { loadChannels })(ChannelList);
