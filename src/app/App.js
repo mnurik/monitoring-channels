@@ -7,12 +7,8 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="container">
-          <table className="table table-hover">
-            <ChannelForm />
-            <ChannelList />
-          </table>
-        </div>
+        <ChannelForm />
+        <ChannelList />
       </div>
     );
   }

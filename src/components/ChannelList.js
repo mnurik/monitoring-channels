@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import ChannelItem from "./ChannelItem";
 import { fetchChannels, deleteChannel } from "./../utils/services";
+import './ChannelList.css';
 
 class ChannelList extends Component {
 
@@ -19,16 +20,13 @@ class ChannelList extends Component {
     }
 
     render() {
-        console.log('====================================');
-        console.log(this.props);
-        console.log('====================================');
         return (
-            <tbody>
+            <div className="channel">
                 {this.props.channels.map(channel => <ChannelItem
                     key={channel.id}
                     channel={channel}
                     onDeleteChannel={this.handledeleteChannel} />)}
-            </tbody>
+            </div>
         );
     }
 }

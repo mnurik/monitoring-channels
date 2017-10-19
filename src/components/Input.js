@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Input = (props) => <input
+    id={props.id}
     className="form-control"
     placeholder={props.placeholder}
     type={props.type || "text"}
