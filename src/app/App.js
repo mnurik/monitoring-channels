@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ChannelForm from './../components/ChannelForm';
-import ChannelList from './../components/ChannelList';
+import ChannelForm from './../containers/ChannelForm';
+import ChannelList from './../containers/ChannelList';
 import './App.css';
 
 export default class App extends Component {
