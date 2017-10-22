@@ -7,7 +7,6 @@ namespace TvMonitoring.Application.Models
 
         public string Ip;
 
-        public int Port;
-
+        public int Port; 
     }
 }
