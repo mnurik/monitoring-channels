@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="TvMonitoringDataContext">
+  <DataContextMoniker Name="/TvMonitoringDataContextDataContext" />
+  <nestedChildShapes>
+    <classShape Id="13cbe9a2-c7a1-4663-a85c-40ec89b3f201" absoluteBounds="0.875, 1, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/TvMonitoringDataContextDataContext/Channel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="45fc568d-1e3e-44ee-a298-d8fc8563d45b" absoluteBounds="0.89, 1.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8d9984e7-4a31-4008-a85b-a6f9319c4f4c" absoluteBounds="3.375, 1, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/TvMonitoringDataContextDataContext/ChannelItem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7d1301bf-a54a-4e14-af7e-d947583c4005" absoluteBounds="3.39, 1.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.875 : 1.78929768880208); (3.375 : 1.78929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/TvMonitoringDataContextDataContext/Channel/Channel_ChannelItem" />
+      <nodes>
+        <classShapeMoniker Id="13cbe9a2-c7a1-4663-a85c-40ec89b3f201" />
+        <classShapeMoniker Id="8d9984e7-4a31-4008-a85b-a6f9319c4f4c" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

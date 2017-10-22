@@ -1,0 +1,5 @@
+C:\Users\Perviz\Source\Repos\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Application\bin\Debug\TvMonitoring.Application.dll
+C:\Users\Perviz\Source\Repos\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Application\bin\Debug\TvMonitoring.Application.pdb
+C:\Users\Perviz\Source\Repos\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Application\obj\Debug\TvMonitoring.Application.csprojResolveAssemblyReference.cache
+C:\Users\Perviz\Source\Repos\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Application\obj\Debug\TvMonitoring.Application.dll
+C:\Users\Perviz\Source\Repos\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Application\obj\Debug\TvMonitoring.Application.pdb
