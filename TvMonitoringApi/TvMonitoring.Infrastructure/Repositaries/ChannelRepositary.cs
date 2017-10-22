@@ -10,8 +10,7 @@ namespace TvMonitoring.Infrastructure.Repositaries
         {
             throw new System.NotImplementedException();
         }
-
-
+         
         public Channel GetById(long id)
         {
             throw new System.NotImplementedException();
