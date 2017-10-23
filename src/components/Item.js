@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from "./Button";
-import Input from "./Input";
 import $ from "jquery";
 import './Item.css';
 
@@ -16,11 +14,20 @@ export default class ChannelItem extends Component {
     }
 
     handleEditingMode = () => {
-        this.setState({ editing: true })
+        this.setState({ editing: true });
+        this.props.onReplace(this.props.channel);
     }
 
-    handleSubmit = e => {
-        if (e.which === 13) { }
+    handleBlur = () => {
+        this.props.onSave();
+        this.setState({ editing: false });
+    }
+
+    handleChange = (e) => {
+        this.props.onEditName(e.target.value);
+        if (e.which === 13) {
+            this.props.onSave();
+        }
     }
 
     openModal = () => {
@@ -29,29 +36,36 @@ export default class ChannelItem extends Component {
     }
 
     render() {
-        const { channel, onDelete, onSave, onEdit } = this.props;
+        const { channel, onDelete, onSave, current } = this.props;
         const { editing } = this.state;
         return (
             <div className={`panel panel-${channel.isSuccess ? "success" : "danger"}`}>
                 <div className="panel-heading" onDoubleClick={this.handleEditingMode}>
                     {editing ?
-                        <Input value={channel.name} onChange={onEdit} />
+                        <input className="form-control" value={current.name} onBlur={this.handleBlur} onChange={this.handleChange} />
                         : channel.Name}
                 </div>
                 <div className="panel-body">
-                    <img src={channel.screanShotUrl} alt={channel.screanShotUrl} />
+                    <img className="channel__screenshot img-rounded" src={channel.screanShotUrl} alt={channel.screanShotUrl} />
+                    <ul className="channel__list">
+                        {channel.IpList.map(item =>
+                            <li key={item.Id}>
+                                {`${item.type}, ${item.Ip}:${item.Port} `}
+                                <i className={`glyphicon glyphicon-${item.status ? "ok-sign channel__item--green" : "exclamation-sign channel__item--red"}`} />
+                            </li>)}
+                    </ul>
                 </div>
                 <div className="panel-footer">
                     <div className="btn-group">
                         {editing ?
-                            <Button className="success btn-sm" onClick={onSave}>
-                                <i className="fa fa-check" />
-                            </Button> : <Button className="info btn-sm" onClick={this.openModal}>
-                                <i className="fa fa-pencil" />
-                            </Button>}
-                        <Button className="danger btn-sm" onClick={() => { onDelete(channel.id) }}>
-                            <i className="fa fa-trash" />
-                        </Button>
+                            <button className="btn btn-success btn-sm" onClick={onSave}>
+                                <i className="glyphicon glyphicon-ok" />
+                            </button> : <button className="btn btn-info btn-sm" onClick={this.openModal}>
+                                <i className="glyphicon glyphicon-pencil" />
+                            </button>}
+                        <button className="btn btn-danger btn-sm" onClick={() => { onDelete(channel.id) }}>
+                            <i className="glyphicon glyphicon-trash" />
+                        </button>
                     </div>
                 </div>
             </div>

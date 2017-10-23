@@ -1,11 +1,12 @@
 import request from "./request";
+import * as endPoints from "./../constants/endPoints";
 
 export const fetchChannels = () => {
-    return request('http://10.50.50.197:3169/api/monitoring/channelList');
+    return request(endPoints.GET_MONITORINGS);
 };
 
 export const saveChannel = (data) => {
-    return request('http://10.50.50.197:3169/api/monitoring/channelList/', {
+    return request(endPoints.UPDATE_MONITORING, {
         method: "POST",
         mode: 'no-cors',
         headers: {
@@ -17,7 +18,7 @@ export const saveChannel = (data) => {
 };
 
 export const deleteChannel = (id) => {
-    return request('http://10.50.50.197:3169/api/monitoring/channelList/' + id, {
+    return request(endPoints.DELETE_MONITORING + id, {
         method: 'DELETE',
         headers: {
             'Accept': 'application/json',

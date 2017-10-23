@@ -6,24 +6,25 @@ import * as actions from "./../actions/actions";
 class ChannelList extends Component {
 
     componentDidMount() {
-        this.props.load()
+        const that = this;
+        (async function callRequest() {
+            await that.props.load();
+            setTimeout(callRequest, 5000);
+        })();
     }
 
     handleSaveChannel = () => {
         this.props.save(this.props.current);
     }
 
-    handleDeleteChannel = (id) => {
-        this.props.delete(id)
-    }
-
     render() {
         return <List
             channels={this.props.channels}
+            current={this.props.current}
             onSave={this.handleSaveChannel}
-            onDelete={this.handleDeleteChannel}
-            onEdit={this.props.change}
+            onDelete={this.props.delete}
             onReplace={this.props.replace}
+            onEditName={this.props.editName}
         />
     }
 }
@@ -37,7 +38,7 @@ const mapDispatchToProps = {
     load: actions.loadChannels,
     delete: actions.deleteChannel,
     save: actions.saveChannel,
-    change: actions.editCurrentName,
+    editName: actions.editCurrentName,
     replace: actions.replaceCurrent
 };
 

@@ -2,16 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Form from "./../components/Form";
 import * as actions from "./../actions/actions";
-import { initialState } from "./../reducers/currentChannel";
 
 class ChannelForm extends Component {
 
     handleChangeList = (key, value, index) => {
         this.props.editList({ key, value, index })
-    }
-
-    handleChangeName = (value) => {
-        this.props.editName(value);
     }
 
     handleSaveChannel = () => {
@@ -21,7 +16,8 @@ class ChannelForm extends Component {
     render() {
         return <Form
             currentChannel={this.props.currentChannel}
-            onChangeName={this.handleChangeName}
+            onChangeName={this.props.editName}
+            onChangeList={this.handleChangeList}
             onChangeCurrent={this.handleChange}
             onSave={this.handleSaveChannel}
         />
