@@ -3,7 +3,7 @@ import Item from "./Item";
 import './List.css';
 
 const List = ({ channels, ...rest }) =>
-    <div className="channel">
+    <div className="channels">
         {
             channels.map(channel =>
                 <Item

@@ -42,11 +42,28 @@ export default class ChannelItem extends Component {
             <div className={`panel panel-${channel.isSuccess ? "success" : "danger"}`}>
                 <div className="panel-heading" onDoubleClick={this.handleEditingMode}>
                     {editing ?
-                        <input className="form-control" value={current.name} onBlur={this.handleBlur} onChange={this.handleChange} />
+                        <input className="form-control" value={current.Name} onBlur={this.handleBlur} onChange={this.handleChange} />
                         : channel.Name}
                 </div>
                 <div className="panel-body">
-                    <img className="channel__screenshot img-rounded" src={channel.screanShotUrl} alt={channel.screanShotUrl} />
+                    <img
+                        className="channel__screenshot img-rounded"
+                        src={channel.screanShotUrl}
+                        alt={channel.screanShotUrl}
+                        data-toggle="modal"
+                        data-target="#videoModal" />
+                    <div className="modal fade" id="videoModal" role="dialog">
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                                <div className="modal-body">
+                                    <video width="100%" height="100%" controls>
+                                        <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4" />
+                                    </video>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                     <ul className="channel__list">
                         {channel.IpList.map(item =>
                             <li key={item.Id}>

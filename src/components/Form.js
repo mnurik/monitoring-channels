@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Form = ({ currentChannel, onSave, onChangeName, onChangeList }) => <div>
+const Form = ({ currentChannel, onSave, onChangeName, onChangeList, onCloseModal }) => <div>
     <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#channelModal">Yeni</button>
     <div id="channelModal" className="modal fade" role="dialog">
         <div className="modal-dialog modal-lg">
             <div className="modal-content">
                 <div className="modal-header">
-                    <button type="button" className="close" data-dismiss="modal">&times;</button>
+                    <button type="button" className="close" onClick={onCloseModal}>&times;</button>
                     <h4 className="modal-title">Yeni Kanal</h4>
                 </div>
                 <div className="modal-body">
@@ -18,19 +18,19 @@ const Form = ({ currentChannel, onSave, onChangeName, onChangeList }) => <div>
                                     className="form-control"
                                     id="name"
                                     placeholder="Adı"
-                                    value={currentChannel.name}
+                                    value={currentChannel.Name}
                                     onChange={({ target }) => onChangeName(target.value)}
                                 />
                             </div>
                         </div>
-                        {currentChannel.ipList.map((item, index) =>
+                        {currentChannel.IpList.map((item, index) =>
                             <div className="form-group" key={index}>
                                 <label className="control-label col-sm-1" htmlFor="type">Cixaris:</label>
                                 <div className="col-sm-2">
                                     <select
                                         className="form-control"
                                         id="type"
-                                        value={item.type}
+                                        value={item.Type}
                                         onChange={({ target }) => onChangeList("type", target.value, index)}
                                     >
                                         <option>Secin</option>
@@ -43,9 +43,9 @@ const Form = ({ currentChannel, onSave, onChangeName, onChangeList }) => <div>
                                     <input
                                         className="form-control"
                                         id="ip"
-                                        value={item.ip}
+                                        value={item.Ip}
                                         placeholder="Url"
-                                        onChange={({ target }) => onChangeList("ip", target.value, index)}
+                                        onChange={({ target }) => onChangeList("Ip", target.value, index)}
                                     />
                                 </div>
                                 <label className="control-label col-sm-1" htmlFor="port">Port:</label>
@@ -53,10 +53,9 @@ const Form = ({ currentChannel, onSave, onChangeName, onChangeList }) => <div>
                                     <input
                                         className="form-control"
                                         id="port"
-                                        type="number"
-                                        value={item.port}
+                                        value={item.Port}
                                         placeholder="Port"
-                                        onChange={({ target }) => onChangeList("port", target.value, index)}
+                                        onChange={({ target }) => onChangeList("Port", target.value, index)}
                                     />
                                 </div>
                                 <label className="control-label col-sm-1" htmlFor="hz">Tezlik:</label>
@@ -64,8 +63,8 @@ const Form = ({ currentChannel, onSave, onChangeName, onChangeList }) => <div>
                                     <input
                                         className="form-control"
                                         id="hz"
-                                        value={item.hz}
-                                        placeholder="Hz"
+                                        value={item.Hz}
+                                        placeholder="Sabit dəyər 500 Hz"
                                         onChange={({ target }) => onChangeList("hz", target.value, index)}
                                     />
                                 </div>

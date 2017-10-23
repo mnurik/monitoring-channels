@@ -1,5 +1,5 @@
 .panel {
-    margin: 5px 5px 5px 0;
+    margin: 9px;
 }
 
 .panel-body {
@@ -15,7 +15,7 @@
 }
 
 .channel__list {
-    padding-left: 8px;
+    padding: 8px 0 0 8px;
     margin-bottom: 0;
 }
 

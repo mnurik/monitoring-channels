@@ -1,28 +1,29 @@
 import * as actionTypes from "./../constants/actionTypes";
 
 export const initialState = {
-    id: null,
-    name: "",
-    ipList: [{ id: null, ip: "", port: "" }]
+    Id: null,
+    Name: "",
+    IpList: [{ Id: null, Ip: "", Port: "", Type: "", Hz: "" }]
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.EDIT_CURRENT_CHANNEL_NAME:
-            return { ...state, name: action.name };
+            return { ...state, Name: action.Name };
         case actionTypes.EDIT_CURRENT_CHANNEL_IPLIST:
-            let ipList = state.ipList.slice();
-            if (action.payload.index === (ipList.length - 1)) {
-                ipList = ipList.concat(initialState.ipList);
+            // It this case checks if changes happens for last ip in list, 
+            // then we add initial ip object to this list. If not then we just update properties.
+            let IpList = state.IpList.slice();
+            if (action.payload.index === (IpList.length - 1)) {
+                IpList.push(initialState.IpList[0]);
             };
             return {
                 ...state,
-                ipList: ipList.map((ip, index) => {
-                    let ipClone = { ...ip };
+                IpList: IpList.map((ip, index) => {
                     if (index === action.payload.index) {
-                        ipClone[action.payload.key] = action.payload.value
+                        return { ...ip, [action.payload.key]: action.payload.value }
                     }
-                    return ipClone;
+                    return ip;
                 })
             };
         case actionTypes.REPLACE_CURRENT_CHANNEL:
