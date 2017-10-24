@@ -195,6 +195,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\ChannelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -209,6 +210,8 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\errorImg.jpg" />
+    <Content Include="Images\noImg.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -233,6 +236,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\cliptvmonitoring.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -256,6 +260,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\ScreenShoots\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -274,6 +279,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TvMonitoring.Application\TvMonitoring.Application.csproj">
+      <Project>{57ee7c76-1eb4-4ba6-882e-ae9418086b7f}</Project>
+      <Name>TvMonitoring.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TvMonitoring.Infrastructure\TvMonitoring.Infrastructure.csproj">
       <Project>{5f94a428-3eb3-4427-9f51-6a342ced011c}</Project>
       <Name>TvMonitoring.Infrastructure</Name>

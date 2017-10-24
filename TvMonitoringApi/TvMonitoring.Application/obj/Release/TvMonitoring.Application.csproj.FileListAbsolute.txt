@@ -1,0 +1,8 @@
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Application\bin\Release\TvMonitoring.Application.dll
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Application\bin\Release\TvMonitoring.Application.pdb
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Application\bin\Release\AutoMapper.dll
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Application\bin\Release\LightInject.dll
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Application\bin\Release\AutoMapper.xml
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Application\obj\Release\TvMonitoring.Application.dll
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Application\obj\Release\TvMonitoring.Application.pdb
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Application\obj\Release\TvMonitoring.Application.csprojResolveAssemblyReference.cache

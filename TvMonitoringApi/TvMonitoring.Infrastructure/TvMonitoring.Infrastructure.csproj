@@ -118,14 +118,5 @@
       <DependentUpon>TvMonitoringDataContext.dbml</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="DataModels\MonitoringDb.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DataModels\MonitoringDb_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>MonitoringDb.mdf</DependentUpon>
-    </Content>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

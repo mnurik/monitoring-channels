@@ -1,17 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MonitoringDb" Class="TvMonitoringDataContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\DataModels\MonitoringDb.mdf;Integrated Security=True" SettingsObjectName="TvMonitoring.Infrastructure.Properties.Settings" SettingsPropertyName="MonitoringDbConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Channel" Member="Channels">
-    <Type Name="Channel">
-      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
-      <Column Name="LogoUrl" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="IsSuccess" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="ScreanShotUrl" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Frequency" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CheckCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Channel_ChannelItem" Member="ChannelItems" ThisKey="Id" OtherKey="ChannelId" Type="ChannelItem" />
-    </Type>
-  </Table>
+  <Connection Mode="AppSettings" ConnectionString="Data Source=10.50.50.197\sql2016;Initial Catalog=MonitoringDb;Persist Security Info=True;User ID=sa" SettingsObjectName="TvMonitoring.Infrastructure.Properties.Settings" SettingsPropertyName="MonitoringDbConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ChannelItem" Member="ChannelItems">
     <Type Name="ChannelItem">
       <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -21,6 +9,29 @@
       <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="IsSuccess" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="Channel_ChannelItem" Member="Channel" ThisKey="ChannelId" OtherKey="Id" Type="Channel" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MonitoredChannels" Member="MonitoredChannels">
+    <Type Name="MonitoredChannel">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ChannelId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Channel_MonitoredChannel" Member="Channel" ThisKey="ChannelId" OtherKey="Id" Type="Channel" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Channel" Member="Channels">
+    <Type Name="Channel">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="LogoUrl" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsSuccess" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ScreenShotUrl" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Frequency" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CheckCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Channel_ChannelItem" Member="ChannelItems" ThisKey="Id" OtherKey="ChannelId" Type="ChannelItem" />
+      <Association Name="Channel_MonitoredChannel" Member="MonitoredChannels" ThisKey="Id" OtherKey="ChannelId" Type="MonitoredChannel" />
     </Type>
   </Table>
 </Database>

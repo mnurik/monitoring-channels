@@ -71,8 +71,6 @@ D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.
 D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\obj\Debug\TvMonitoring.Api.dll
 D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\obj\Debug\TvMonitoring.Api.pdb
 D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\obj\Debug\TvMonitoring.Api.csprojResolveAssemblyReference.cache
-D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\bin\DataModels\MonitoringDb.mdf
-D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\bin\DataModels\MonitoringDb_log.ldf
 D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\bin\AutoMapper.dll
 D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\bin\LightInject.dll
 D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\bin\LightInject.ServiceLocation.dll
@@ -82,7 +80,6 @@ D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.
 D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\bin\TvMonitoring.Infrastructure.dll
 D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\bin\TvMonitoring.Application.dll
 D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\bin\TvMonitoring.Infrastructure.pdb
-D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\bin\TvMonitoring.Infrastructure.dll.config
 D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\bin\AutoMapper.xml
 D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\bin\LightInject.ServiceLocation.pdb
 D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\bin\LightInject.ServiceLocation.xml
@@ -90,7 +87,6 @@ D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.
 D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\bin\LightInject.Web.xml
 D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\bin\LightInject.WebApi.pdb
 D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\bin\LightInject.WebApi.xml
-D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\bin\LightInject.WebApi.dll.config
 D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\bin\Microsoft.Practices.ServiceLocation.pdb
 D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\bin\Microsoft.Practices.ServiceLocation.xml
 D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Api\bin\TvMonitoring.Application.pdb

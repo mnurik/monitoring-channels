@@ -11,6 +11,9 @@ namespace TvMonitoring.Application.Models
             ChannelItems = new List<ChannelItem>();
             Frequency = 500;
             CheckCount = 3;
+            LogoUrl = "/images/noimg.jpg";
+            ScreenShotUrl = "/images/noimg.jpg";
+
         }
 
         public long Id { get; set; }
@@ -19,7 +22,7 @@ namespace TvMonitoring.Application.Models
 
         public string LogoUrl { get; set; }
 
-        public string ScreanShotUrl { get; set; }
+        public string ScreenShotUrl { get; set; }
 
         public bool IsSuccess { get; set; }
 

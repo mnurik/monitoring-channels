@@ -11,6 +11,7 @@ using System.Linq;
 using Microsoft.Practices.ServiceLocation;
 using ServiceContainer = LightInject.ServiceContainer;
 using TvMonitoring.Infrastructure.DataModels;
+using System.Configuration;
 
 namespace TvMonitoring.Api
 {
@@ -34,7 +35,7 @@ namespace TvMonitoring.Api
             RegisterCompositionRoots(serviceContainer);
             IServiceLocator serviceLocator = new LightInjectServiceLocator(serviceContainer);
             ServiceLocator.SetLocatorProvider(() => serviceLocator);
-          serviceContainer.EnablePerWebRequestScope();
+            serviceContainer.EnablePerWebRequestScope();
             serviceContainer.RegisterApiControllers();
             serviceContainer.EnableWebApi(config);
         }
@@ -67,8 +68,8 @@ namespace TvMonitoring.Api
 
         private void RegisterDataAccess(ServiceContainer serviceContainer)
         {
-            //string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-            serviceContainer.Register(fac => new TvMonitoringDataContextDataContext(), new PerRequestLifeTime());
+            string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            serviceContainer.Register(fac => new TvMonitoringDataContextDataContext(connectionString), new PerRequestLifeTime());
         }
 
         private void RegisterCompositionRoots(ServiceContainer serviceContainer)

@@ -6,7 +6,14 @@ using TvMonitoring.Application.Models;
 namespace TvMonitoring.Application.Interfaces
 {
     public interface IChannelService
-    { 
-        List<Channel> GetChannelList();
+    {
+        ActionResult<List<Channel>> GetChannelList();
+        ActionResult<bool> StartAll();
+        ActionResult<bool> Start(long id);
+        ActionResult<bool> StopAll();
+        ActionResult<bool> Stop(long id);
+        ActionResult<List<Channel>> GetActives();
+
+        
     }
 }

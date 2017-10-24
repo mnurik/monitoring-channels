@@ -30,12 +30,15 @@ namespace TvMonitoring.Infrastructure.DataModels
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertChannel(Channel instance);
-    partial void UpdateChannel(Channel instance);
-    partial void DeleteChannel(Channel instance);
     partial void InsertChannelItem(ChannelItem instance);
     partial void UpdateChannelItem(ChannelItem instance);
     partial void DeleteChannelItem(ChannelItem instance);
+    partial void InsertMonitoredChannel(MonitoredChannel instance);
+    partial void UpdateMonitoredChannel(MonitoredChannel instance);
+    partial void DeleteMonitoredChannel(MonitoredChannel instance);
+    partial void InsertChannel(Channel instance);
+    partial void UpdateChannel(Channel instance);
+    partial void DeleteChannel(Channel instance);
     #endregion
 		
 		public TvMonitoringDataContextDataContext() : 
@@ -68,14 +71,6 @@ namespace TvMonitoring.Infrastructure.DataModels
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Channel> Channels
-		{
-			get
-			{
-				return this.GetTable<Channel>();
-			}
-		}
-		
 		public System.Data.Linq.Table<ChannelItem> ChannelItems
 		{
 			get
@@ -83,239 +78,21 @@ namespace TvMonitoring.Infrastructure.DataModels
 				return this.GetTable<ChannelItem>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Channel")]
-	public partial class Channel : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _Id;
-		
-		private string _Name;
-		
-		private string _LogoUrl;
-		
-		private bool _IsSuccess;
-		
-		private string _ScreanShotUrl;
-		
-		private int _Frequency;
-		
-		private int _CheckCount;
-		
-		private EntitySet<ChannelItem> _ChannelItems;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(long value);
-    partial void OnIdChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnLogoUrlChanging(string value);
-    partial void OnLogoUrlChanged();
-    partial void OnIsSuccessChanging(bool value);
-    partial void OnIsSuccessChanged();
-    partial void OnScreanShotUrlChanging(string value);
-    partial void OnScreanShotUrlChanged();
-    partial void OnFrequencyChanging(int value);
-    partial void OnFrequencyChanged();
-    partial void OnCheckCountChanging(int value);
-    partial void OnCheckCountChanged();
-    #endregion
-		
-		public Channel()
-		{
-			this._ChannelItems = new EntitySet<ChannelItem>(new Action<ChannelItem>(this.attach_ChannelItems), new Action<ChannelItem>(this.detach_ChannelItems));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long Id
+		public System.Data.Linq.Table<MonitoredChannel> MonitoredChannels
 		{
 			get
 			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
+				return this.GetTable<MonitoredChannel>();
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(150) NOT NULL", CanBeNull=false)]
-		public string Name
+		public System.Data.Linq.Table<Channel> Channels
 		{
 			get
 			{
-				return this._Name;
+				return this.GetTable<Channel>();
 			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogoUrl", DbType="NVarChar(MAX)")]
-		public string LogoUrl
-		{
-			get
-			{
-				return this._LogoUrl;
-			}
-			set
-			{
-				if ((this._LogoUrl != value))
-				{
-					this.OnLogoUrlChanging(value);
-					this.SendPropertyChanging();
-					this._LogoUrl = value;
-					this.SendPropertyChanged("LogoUrl");
-					this.OnLogoUrlChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsSuccess", DbType="Bit NOT NULL")]
-		public bool IsSuccess
-		{
-			get
-			{
-				return this._IsSuccess;
-			}
-			set
-			{
-				if ((this._IsSuccess != value))
-				{
-					this.OnIsSuccessChanging(value);
-					this.SendPropertyChanging();
-					this._IsSuccess = value;
-					this.SendPropertyChanged("IsSuccess");
-					this.OnIsSuccessChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ScreanShotUrl", DbType="NVarChar(MAX)")]
-		public string ScreanShotUrl
-		{
-			get
-			{
-				return this._ScreanShotUrl;
-			}
-			set
-			{
-				if ((this._ScreanShotUrl != value))
-				{
-					this.OnScreanShotUrlChanging(value);
-					this.SendPropertyChanging();
-					this._ScreanShotUrl = value;
-					this.SendPropertyChanged("ScreanShotUrl");
-					this.OnScreanShotUrlChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Frequency", DbType="Int NOT NULL")]
-		public int Frequency
-		{
-			get
-			{
-				return this._Frequency;
-			}
-			set
-			{
-				if ((this._Frequency != value))
-				{
-					this.OnFrequencyChanging(value);
-					this.SendPropertyChanging();
-					this._Frequency = value;
-					this.SendPropertyChanged("Frequency");
-					this.OnFrequencyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckCount", DbType="Int NOT NULL")]
-		public int CheckCount
-		{
-			get
-			{
-				return this._CheckCount;
-			}
-			set
-			{
-				if ((this._CheckCount != value))
-				{
-					this.OnCheckCountChanging(value);
-					this.SendPropertyChanging();
-					this._CheckCount = value;
-					this.SendPropertyChanged("CheckCount");
-					this.OnCheckCountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Channel_ChannelItem", Storage="_ChannelItems", ThisKey="Id", OtherKey="ChannelId")]
-		public EntitySet<ChannelItem> ChannelItems
-		{
-			get
-			{
-				return this._ChannelItems;
-			}
-			set
-			{
-				this._ChannelItems.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ChannelItems(ChannelItem entity)
-		{
-			this.SendPropertyChanging();
-			entity.Channel = this;
-		}
-		
-		private void detach_ChannelItems(ChannelItem entity)
-		{
-			this.SendPropertyChanging();
-			entity.Channel = null;
 		}
 	}
 	
@@ -539,6 +316,467 @@ namespace TvMonitoring.Infrastructure.DataModels
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MonitoredChannels")]
+	public partial class MonitoredChannel : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _Id;
+		
+		private long _ChannelId;
+		
+		private bool _IsDeleted;
+		
+		private System.DateTime _StartDate;
+		
+		private EntityRef<Channel> _Channel;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(long value);
+    partial void OnIdChanged();
+    partial void OnChannelIdChanging(long value);
+    partial void OnChannelIdChanged();
+    partial void OnIsDeletedChanging(bool value);
+    partial void OnIsDeletedChanged();
+    partial void OnStartDateChanging(System.DateTime value);
+    partial void OnStartDateChanged();
+    #endregion
+		
+		public MonitoredChannel()
+		{
+			this._Channel = default(EntityRef<Channel>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChannelId", DbType="BigInt NOT NULL")]
+		public long ChannelId
+		{
+			get
+			{
+				return this._ChannelId;
+			}
+			set
+			{
+				if ((this._ChannelId != value))
+				{
+					if (this._Channel.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnChannelIdChanging(value);
+					this.SendPropertyChanging();
+					this._ChannelId = value;
+					this.SendPropertyChanged("ChannelId");
+					this.OnChannelIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsDeleted", DbType="Bit NOT NULL")]
+		public bool IsDeleted
+		{
+			get
+			{
+				return this._IsDeleted;
+			}
+			set
+			{
+				if ((this._IsDeleted != value))
+				{
+					this.OnIsDeletedChanging(value);
+					this.SendPropertyChanging();
+					this._IsDeleted = value;
+					this.SendPropertyChanged("IsDeleted");
+					this.OnIsDeletedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="DateTime NOT NULL")]
+		public System.DateTime StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this.OnStartDateChanging(value);
+					this.SendPropertyChanging();
+					this._StartDate = value;
+					this.SendPropertyChanged("StartDate");
+					this.OnStartDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Channel_MonitoredChannel", Storage="_Channel", ThisKey="ChannelId", OtherKey="Id", IsForeignKey=true)]
+		public Channel Channel
+		{
+			get
+			{
+				return this._Channel.Entity;
+			}
+			set
+			{
+				Channel previousValue = this._Channel.Entity;
+				if (((previousValue != value) 
+							|| (this._Channel.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Channel.Entity = null;
+						previousValue.MonitoredChannels.Remove(this);
+					}
+					this._Channel.Entity = value;
+					if ((value != null))
+					{
+						value.MonitoredChannels.Add(this);
+						this._ChannelId = value.Id;
+					}
+					else
+					{
+						this._ChannelId = default(long);
+					}
+					this.SendPropertyChanged("Channel");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Channel")]
+	public partial class Channel : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _Id;
+		
+		private string _Name;
+		
+		private string _LogoUrl;
+		
+		private bool _IsSuccess;
+		
+		private string _ScreenShotUrl;
+		
+		private int _Frequency;
+		
+		private int _CheckCount;
+		
+		private bool _IsDeleted;
+		
+		private EntitySet<ChannelItem> _ChannelItems;
+		
+		private EntitySet<MonitoredChannel> _MonitoredChannels;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(long value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnLogoUrlChanging(string value);
+    partial void OnLogoUrlChanged();
+    partial void OnIsSuccessChanging(bool value);
+    partial void OnIsSuccessChanged();
+    partial void OnScreenShotUrlChanging(string value);
+    partial void OnScreenShotUrlChanged();
+    partial void OnFrequencyChanging(int value);
+    partial void OnFrequencyChanged();
+    partial void OnCheckCountChanging(int value);
+    partial void OnCheckCountChanged();
+    partial void OnIsDeletedChanging(bool value);
+    partial void OnIsDeletedChanged();
+    #endregion
+		
+		public Channel()
+		{
+			this._ChannelItems = new EntitySet<ChannelItem>(new Action<ChannelItem>(this.attach_ChannelItems), new Action<ChannelItem>(this.detach_ChannelItems));
+			this._MonitoredChannels = new EntitySet<MonitoredChannel>(new Action<MonitoredChannel>(this.attach_MonitoredChannels), new Action<MonitoredChannel>(this.detach_MonitoredChannels));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(150) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogoUrl", DbType="NVarChar(MAX)")]
+		public string LogoUrl
+		{
+			get
+			{
+				return this._LogoUrl;
+			}
+			set
+			{
+				if ((this._LogoUrl != value))
+				{
+					this.OnLogoUrlChanging(value);
+					this.SendPropertyChanging();
+					this._LogoUrl = value;
+					this.SendPropertyChanged("LogoUrl");
+					this.OnLogoUrlChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsSuccess", DbType="Bit NOT NULL")]
+		public bool IsSuccess
+		{
+			get
+			{
+				return this._IsSuccess;
+			}
+			set
+			{
+				if ((this._IsSuccess != value))
+				{
+					this.OnIsSuccessChanging(value);
+					this.SendPropertyChanging();
+					this._IsSuccess = value;
+					this.SendPropertyChanged("IsSuccess");
+					this.OnIsSuccessChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ScreenShotUrl", DbType="NVarChar(MAX)")]
+		public string ScreenShotUrl
+		{
+			get
+			{
+				return this._ScreenShotUrl;
+			}
+			set
+			{
+				if ((this._ScreenShotUrl != value))
+				{
+					this.OnScreenShotUrlChanging(value);
+					this.SendPropertyChanging();
+					this._ScreenShotUrl = value;
+					this.SendPropertyChanged("ScreenShotUrl");
+					this.OnScreenShotUrlChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Frequency", DbType="Int NOT NULL")]
+		public int Frequency
+		{
+			get
+			{
+				return this._Frequency;
+			}
+			set
+			{
+				if ((this._Frequency != value))
+				{
+					this.OnFrequencyChanging(value);
+					this.SendPropertyChanging();
+					this._Frequency = value;
+					this.SendPropertyChanged("Frequency");
+					this.OnFrequencyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckCount", DbType="Int NOT NULL")]
+		public int CheckCount
+		{
+			get
+			{
+				return this._CheckCount;
+			}
+			set
+			{
+				if ((this._CheckCount != value))
+				{
+					this.OnCheckCountChanging(value);
+					this.SendPropertyChanging();
+					this._CheckCount = value;
+					this.SendPropertyChanged("CheckCount");
+					this.OnCheckCountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsDeleted", DbType="Bit NOT NULL")]
+		public bool IsDeleted
+		{
+			get
+			{
+				return this._IsDeleted;
+			}
+			set
+			{
+				if ((this._IsDeleted != value))
+				{
+					this.OnIsDeletedChanging(value);
+					this.SendPropertyChanging();
+					this._IsDeleted = value;
+					this.SendPropertyChanged("IsDeleted");
+					this.OnIsDeletedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Channel_ChannelItem", Storage="_ChannelItems", ThisKey="Id", OtherKey="ChannelId")]
+		public EntitySet<ChannelItem> ChannelItems
+		{
+			get
+			{
+				return this._ChannelItems;
+			}
+			set
+			{
+				this._ChannelItems.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Channel_MonitoredChannel", Storage="_MonitoredChannels", ThisKey="Id", OtherKey="ChannelId")]
+		public EntitySet<MonitoredChannel> MonitoredChannels
+		{
+			get
+			{
+				return this._MonitoredChannels;
+			}
+			set
+			{
+				this._MonitoredChannels.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ChannelItems(ChannelItem entity)
+		{
+			this.SendPropertyChanging();
+			entity.Channel = this;
+		}
+		
+		private void detach_ChannelItems(ChannelItem entity)
+		{
+			this.SendPropertyChanging();
+			entity.Channel = null;
+		}
+		
+		private void attach_MonitoredChannels(MonitoredChannel entity)
+		{
+			this.SendPropertyChanging();
+			entity.Channel = this;
+		}
+		
+		private void detach_MonitoredChannels(MonitoredChannel entity)
+		{
+			this.SendPropertyChanging();
+			entity.Channel = null;
 		}
 	}
 }

@@ -7,17 +7,18 @@ using System.Web.Http;
 
 namespace TvMonitoring.Api.Controllers
 {
+    [RoutePrefix("api/Values")]
     public class ValuesController : ApiController
     {
         // GET api/values
-        [Route("api/Values/Get")]
+        [Route("Get")]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
         // GET api/values/5
-        [Route("api/Values/GetById")]
+        [Route("GetById")]
         public string Get(int id)
         {
             return "value";

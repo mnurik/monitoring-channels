@@ -51,6 +51,7 @@
     <Compile Include="Interfaces\IChannelRepositary.cs" />
     <Compile Include="Interfaces\IChannelService.cs" />
     <Compile Include="MappingProfile.cs" />
+    <Compile Include="Models\ActionResult.cs" />
     <Compile Include="Models\Channel.cs" />
     <Compile Include="Models\ChannelItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

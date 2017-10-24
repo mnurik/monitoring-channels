@@ -26,8 +26,8 @@ namespace TvMonitoring.Infrastructure.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DataModels\\Mo" +
-            "nitoringDb.mdf;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.50.50.197\\sql2016;Initial Catalog=MonitoringDb;Persist Security In" +
+            "fo=True;User ID=sa;Password=P@ssw0rd")]
         public string MonitoringDbConnectionString {
             get {
                 return ((string)(this["MonitoringDbConnectionString"]));
