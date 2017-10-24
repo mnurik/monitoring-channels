@@ -5,3 +5,16 @@ C:\Users\Perviz\Source\Repos\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Inf
 C:\Users\Perviz\Source\Repos\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Infrastructure\obj\Debug\TvMonitoring.Infrastructure.pdb
 C:\Users\Perviz\Source\Repos\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Infrastructure\bin\Debug\TvMonitoring.Application.dll
 C:\Users\Perviz\Source\Repos\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Infrastructure\bin\Debug\TvMonitoring.Application.pdb
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Infrastructure\bin\Debug\DataModels\MonitoringDb.mdf
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Infrastructure\bin\Debug\DataModels\MonitoringDb_log.ldf
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Infrastructure\bin\Debug\TvMonitoring.Infrastructure.dll.config
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Infrastructure\bin\Debug\TvMonitoring.Infrastructure.dll
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Infrastructure\bin\Debug\TvMonitoring.Infrastructure.pdb
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Infrastructure\bin\Debug\AutoMapper.dll
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Infrastructure\bin\Debug\LightInject.dll
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Infrastructure\bin\Debug\TvMonitoring.Application.dll
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Infrastructure\bin\Debug\TvMonitoring.Application.pdb
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Infrastructure\bin\Debug\AutoMapper.xml
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Infrastructure\obj\Debug\TvMonitoring.Infrastructure.csprojResolveAssemblyReference.cache
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Infrastructure\obj\Debug\TvMonitoring.Infrastructure.dll
+D:\Kompyuterdekiler\TfsProjects\TvMonitoringSystem\TvMonitoringApi\TvMonitoring.Infrastructure\obj\Debug\TvMonitoring.Infrastructure.pdb

@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMonitoring.Api", "TvMonitoringApi\TvMonitoring.Api.csproj", "{05BCBFF6-9323-49B7-9E7E-FB62338DEE0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMonitoring.Api.ol", "TvMonitoringApi\TvMonitoring.Api.ol.csproj", "{05BCBFF6-9323-49B7-9E7E-FB62338DEE0F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMonitoring.Application", "TvMonitoring.Application\TvMonitoring.Application.csproj", "{57EE7C76-1EB4-4BA6-882E-AE9418086B7F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMonitoring.Infrastructure", "TvMonitoring.Infrastructure\TvMonitoring.Infrastructure.csproj", "{5F94A428-3EB3-4427-9F51-6A342CED011C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMonitoring.Api", "TvMonitoring.Api\TvMonitoring.Api.csproj", "{4C0F2C14-0357-43FE-9605-F9C0051122CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{5F94A428-3EB3-4427-9F51-6A342CED011C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F94A428-3EB3-4427-9F51-6A342CED011C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F94A428-3EB3-4427-9F51-6A342CED011C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C0F2C14-0357-43FE-9605-F9C0051122CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C0F2C14-0357-43FE-9605-F9C0051122CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C0F2C14-0357-43FE-9605-F9C0051122CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C0F2C14-0357-43FE-9605-F9C0051122CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

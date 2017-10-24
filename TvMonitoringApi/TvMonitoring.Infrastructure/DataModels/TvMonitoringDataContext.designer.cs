@@ -99,6 +99,12 @@ namespace TvMonitoring.Infrastructure.DataModels
 		
 		private bool _IsSuccess;
 		
+		private string _ScreanShotUrl;
+		
+		private int _Frequency;
+		
+		private int _CheckCount;
+		
 		private EntitySet<ChannelItem> _ChannelItems;
 		
     #region Extensibility Method Definitions
@@ -113,6 +119,12 @@ namespace TvMonitoring.Infrastructure.DataModels
     partial void OnLogoUrlChanged();
     partial void OnIsSuccessChanging(bool value);
     partial void OnIsSuccessChanged();
+    partial void OnScreanShotUrlChanging(string value);
+    partial void OnScreanShotUrlChanged();
+    partial void OnFrequencyChanging(int value);
+    partial void OnFrequencyChanged();
+    partial void OnCheckCountChanging(int value);
+    partial void OnCheckCountChanged();
     #endregion
 		
 		public Channel()
@@ -161,7 +173,7 @@ namespace TvMonitoring.Infrastructure.DataModels
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogoUrl", DbType="NVarChar(150) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogoUrl", DbType="NVarChar(MAX)")]
 		public string LogoUrl
 		{
 			get
@@ -197,6 +209,66 @@ namespace TvMonitoring.Infrastructure.DataModels
 					this._IsSuccess = value;
 					this.SendPropertyChanged("IsSuccess");
 					this.OnIsSuccessChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ScreanShotUrl", DbType="NVarChar(MAX)")]
+		public string ScreanShotUrl
+		{
+			get
+			{
+				return this._ScreanShotUrl;
+			}
+			set
+			{
+				if ((this._ScreanShotUrl != value))
+				{
+					this.OnScreanShotUrlChanging(value);
+					this.SendPropertyChanging();
+					this._ScreanShotUrl = value;
+					this.SendPropertyChanged("ScreanShotUrl");
+					this.OnScreanShotUrlChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Frequency", DbType="Int NOT NULL")]
+		public int Frequency
+		{
+			get
+			{
+				return this._Frequency;
+			}
+			set
+			{
+				if ((this._Frequency != value))
+				{
+					this.OnFrequencyChanging(value);
+					this.SendPropertyChanging();
+					this._Frequency = value;
+					this.SendPropertyChanged("Frequency");
+					this.OnFrequencyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckCount", DbType="Int NOT NULL")]
+		public int CheckCount
+		{
+			get
+			{
+				return this._CheckCount;
+			}
+			set
+			{
+				if ((this._CheckCount != value))
+				{
+					this.OnCheckCountChanging(value);
+					this.SendPropertyChanging();
+					this._CheckCount = value;
+					this.SendPropertyChanged("CheckCount");
+					this.OnCheckCountChanged();
 				}
 			}
 		}
@@ -261,6 +333,10 @@ namespace TvMonitoring.Infrastructure.DataModels
 		
 		private long _ChannelId;
 		
+		private int _Type;
+		
+		private bool _IsSuccess;
+		
 		private EntityRef<Channel> _Channel;
 		
     #region Extensibility Method Definitions
@@ -275,6 +351,10 @@ namespace TvMonitoring.Infrastructure.DataModels
     partial void OnPortChanged();
     partial void OnChannelIdChanging(long value);
     partial void OnChannelIdChanged();
+    partial void OnTypeChanging(int value);
+    partial void OnTypeChanged();
+    partial void OnIsSuccessChanging(bool value);
+    partial void OnIsSuccessChanged();
     #endregion
 		
 		public ChannelItem()
@@ -363,6 +443,46 @@ namespace TvMonitoring.Infrastructure.DataModels
 					this._ChannelId = value;
 					this.SendPropertyChanged("ChannelId");
 					this.OnChannelIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int NOT NULL")]
+		public int Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsSuccess", DbType="Bit NOT NULL")]
+		public bool IsSuccess
+		{
+			get
+			{
+				return this._IsSuccess;
+			}
+			set
+			{
+				if ((this._IsSuccess != value))
+				{
+					this.OnIsSuccessChanging(value);
+					this.SendPropertyChanging();
+					this._IsSuccess = value;
+					this.SendPropertyChanged("IsSuccess");
+					this.OnIsSuccessChanged();
 				}
 			}
 		}

@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LightInject, Version=5.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LightInject.5.1.0\lib\net46\LightInject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,11 +50,15 @@
   <ItemGroup>
     <Compile Include="Interfaces\IChannelRepositary.cs" />
     <Compile Include="Interfaces\IChannelService.cs" />
+    <Compile Include="MappingProfile.cs" />
     <Compile Include="Models\Channel.cs" />
     <Compile Include="Models\ChannelItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositaryCompositionRoot.cs" />
     <Compile Include="Services\ChannelService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
