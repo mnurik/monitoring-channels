@@ -1,26 +1,34 @@
-export function checkStatus(response) {
-    if (!response.ok) {
-        // (response.status < 200 || response.status > 300)
-        const error = new Error(response.statusText);
-        error.response = response;
-        throw error;
-    }
-    return response;
-};
+import request from './request'
+import * as endPoints from './../constants/endPoints'
 
-export function parseJSON(response) {
-    return response.json();
-};
+export const fetchChannels = () =>
+  request({ url: endPoints.GET_CHANNELS })
 
-export function callApi(url, config = {}) {
-    return fetch(url, config)
-        .then(checkStatus)
-        .then(parseJSON)
-        .catch(error => {
-            console.error(error.message);
-        });
-};
+export const saveChannel = (data) =>
+  request({
+    url: endPoints.UPDATE_MONITORING,
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
 
-export const fetchChannels = () => {
-    return callApi('');
-};
+export const deleteChannel = (id) =>
+  request({ url: endPoints.DELETE_MONITORING + id, method: 'DELETE' })
+
+export const getActivesChannels = () =>
+  request({ url: endPoints.GET_ACTIVE_CHANNELS })
+
+export const startAllChannels = () =>
+  request({ url: endPoints.START_ALL_CHANNELS })
+
+export const stopAllChannels = () =>
+  request({ url: endPoints.STOP_ALL_CHANNELS })
+
+export const startChannel = (id) =>
+  request({ url: endPoints.START_CHANNEL + id })
+
+export const stopChannel = (id) =>
+  request({ url: endPoints.STOP_CHANNEL + id })

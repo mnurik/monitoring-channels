@@ -1,0 +1,37 @@
+.panel {
+    margin: 9px;
+}
+
+.panel-danger--red > .panel-heading {
+    background-color: #d9534f !important;
+    color: #fff !important;
+}
+
+.panel-body {
+    padding: 5px !important;
+}
+
+.channel__screenshot {
+    display: block;
+    width: 160px;
+    height: 100px;
+    /* height: 100px; */
+    box-sizing: border-box;
+}
+
+.channel__list {
+    padding: 0;
+    margin-bottom: 0;
+    list-style: none;
+    height: 61px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.channel__item--green {
+color: #5cb85c;
+}
+
+.channel__item--red {
+color: #d9534f;
+}
