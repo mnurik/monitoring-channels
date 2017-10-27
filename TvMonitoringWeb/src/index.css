@@ -1,0 +1,10 @@
+body {
+    padding: 10px;
+    background-color: #f5f5f5 !important;
+    color: #4d4d4d !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 300;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
