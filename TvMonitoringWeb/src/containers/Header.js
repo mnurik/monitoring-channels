@@ -13,7 +13,6 @@ class ChannelForm extends Component {
         editCurrentList: PropTypes.func.isRequired,
         editChannel: PropTypes.func.isRequired,
         addChannel: PropTypes.func.isRequired,
-        clearCurrent: PropTypes.func.isRequired,
         current: PropTypes.object.isRequired,
         channels: PropTypes.array.isRequired,
         editCurrentData: PropTypes.func.isRequired,
@@ -25,11 +24,11 @@ class ChannelForm extends Component {
     }
 
     handleSaveChannel = () => {
-        services.saveChannel(this.props.current)
+        const { current } = this.props;
+        services.saveChannel(current)
             .subscribe(response => {
-                if (response.id) this.props.editChannel(response)
+                if (current.id) this.props.editChannel(response)
                 else this.props.addChannel(response)
-                this.props.clearCurrent()
             });
     }
 
@@ -52,16 +51,17 @@ class ChannelForm extends Component {
         return <div className="row">
             <Form
                 currentChannel={this.props.current}
+                imageMode={this.props.control.imageMode}
                 onChangeData={this.props.editCurrentData}
                 onChangeList={this.handleChangeList}
                 onChangeCurrent={this.handleChange}
                 onSave={this.handleSaveChannel}
                 onCloseModal={this.handleCloseModal}
+                toggleImageMode={this.props.toggleImageMode}
             />
             <ControlPanel
                 startAllChannelsMonitoring={this.startAllChannelsMonitoring}
                 stopAllChannelsMonitoring={this.stopAllChannelsMonitoring}
-                toggleImageMode={this.props.toggleImageMode}
             />
         </div>;
     }

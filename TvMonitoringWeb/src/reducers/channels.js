@@ -10,6 +10,13 @@ export default (state = initialState, action) => {
     case actionTypes.ADD_CHANNEL:
       return [...state, action.payload]
     case actionTypes.EDIT_CHANNEL:
+      return state.map(channel => {
+        if (channel.id === action.payload.id) {
+          return action.payload;
+        }
+        return channel;
+      })
+    case actionTypes.GET_ACTIVE_CHANNELS:
       let cloneState = _.clone(state);
       action.payload.forEach(channel => {
         const index = _.findIndex(state, { id: channel.id });

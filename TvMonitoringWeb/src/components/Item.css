@@ -1,5 +1,6 @@
 .panel {
     margin: 0.3% !important;
+    text-align: center;
 }
 
 .panel-danger--red > .panel-heading {

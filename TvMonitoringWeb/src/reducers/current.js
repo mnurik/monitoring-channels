@@ -9,7 +9,7 @@ export const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.EDIT_CURRENT_CHANNEL_NAME:
+    case actionTypes.EDIT_CURRENT_CHANNEL:
       return { ...state, ...action.payload }
     case actionTypes.EDIT_CURRENT_CHANNEL_IPLIST:
       // It this case checks if changes happens for last ip in list, 

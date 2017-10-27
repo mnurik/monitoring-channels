@@ -1,4 +1,4 @@
-import reducer, { initialState } from "./currentChannel";
+import reducer, { initialState } from "./current";
 import * as actionTypes from "./../constants/actionTypes";
 
 describe("currentChannels reducer test", () => {
@@ -17,18 +17,18 @@ describe("currentChannels reducer test", () => {
         expect(reducer(undefined, {})).toMatchObject(initialState);
     });
 
-    it("should handle EDIT_CURRENT_CHANNEL_NAME state", () => {
-        expect(reducer({ Name: "test" }, { type: actionTypes.EDIT_CURRENT_CHANNEL_NAME, Name: "new test" }))
-            .toEqual({ Name: "new test" });
+    it("should handle EDIT_CURRENT_CHANNEL state", () => {
+        expect(reducer({ name: "test" }, { type: actionTypes.EDIT_CURRENT_CHANNEL, payload: { name: "new test" } }))
+            .toEqual({ name: "new test" });
     });
 
     it("should handle EDIT_CURRENT_CHANNEL_IPLIST state", () => {
         expect(reducer(
-            { IpList: [{ ip: "10.10.10.10" }] },
+            { channelItems: [{ ip: "10.10.10.10" }] },
             { type: actionTypes.EDIT_CURRENT_CHANNEL_IPLIST, payload: { index: 0, key: "ip", value: "11.10.10.10" } }
         )).toEqual({
-            IpList: [{ ip: "11.10.10.10" },
-            { "Hz": "", "Id": null, "Ip": "", "Port": "", "Type": "" }]
+            channelItems: [{ ip: "11.10.10.10" },
+            { "hz": "", "id": null, "ip": "", "port": "", "type": "" }]
         });
 
     });

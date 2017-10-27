@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
     case actionTypes.STOP_CHANNEL:
       return {
         imageMode: state.imageMode,
-        channels: state.filter(item => item !== action.payload)
+        channels: state.channels.filter(item => item !== action.payload)
       };
     case actionTypes.START_ALL_CHANNELS:
       return {

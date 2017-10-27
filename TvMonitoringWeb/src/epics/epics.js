@@ -1,18 +1,27 @@
-import "rxjs/Observable"
+import { Observable } from "rxjs"
 import { combineEpics } from 'redux-observable'
 import * as actionTypes from './../constants/actionTypes'
 import * as actions from './../actions/actions'
 import * as services from './../utils/services'
 
 const startEpics = action$ => action$.ofType(actionTypes.START_CHANNEL, actionTypes.START_ALL_CHANNELS)
-  .mapTo(actions.editChannel([]))
+  .mapTo(actions.getActives([]));
 
-const getActivesEpics = (action$, store) => action$.ofType(actionTypes.EDIT_CHANNEL)
+const getActivesEpics = (action$, store) => action$.ofType(actionTypes.GET_ACTIVE_CHANNELS)
   .debounceTime(5 * 1000)
-  .mergeMap(action =>
-    services.getActivesChannels(store.getState().control.imageMode)
-      .map(response => actions.editChannel(response))
-      .takeUntil(action$.ofType(actionTypes.STOP_ALL_CHANNELS))
-  )
+  .mergeMap(action => {
+    const state = store.getState();
+    if (state.control.channels.length) {
+      return services.getActivesChannels(state.control.imageMode)
+        .map(response => actions.getActives(response))
+        .takeUntil(action$.ofType(actionTypes.STOP_ALL_CHANNELS));
+    } else {
+      return Observable.empty();
+    }
+  });
 
-export default combineEpics(startEpics, getActivesEpics)
+const clearCurrentEpic = action$ => action$.ofType(actionTypes.EDIT_CHANNEL, actionTypes.ADD_CHANNEL)
+  .mapTo(actions.clearCurrent);
+
+
+export default combineEpics(startEpics, getActivesEpics, clearCurrentEpic)

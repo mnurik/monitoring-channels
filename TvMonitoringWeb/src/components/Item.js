@@ -7,7 +7,6 @@ export default class Item extends Component {
 
     static propTypes = {
         channel: PropTypes.object.isRequired,
-        current: PropTypes.object.isRequired,
         control: PropTypes.object.isRequired,
         onReplace: PropTypes.func.isRequired,
         onSave: PropTypes.func.isRequired,
@@ -19,25 +18,7 @@ export default class Item extends Component {
     }
 
     state = {
-        editing: false,
         videoSrc: ""
-    }
-
-    handleEditingMode = () => {
-        this.setState({ editing: true });
-        this.props.onReplace(this.props.channel);
-    }
-
-    handleBlur = () => {
-        this.props.onSave();
-        this.setState({ editing: false });
-    }
-
-    handleChange = (e) => {
-        this.props.onEditData(e.target.value);
-        if (e.which === 13) {
-            this.props.onSave();
-        }
     }
 
     openModal = () => {
@@ -52,15 +33,10 @@ export default class Item extends Component {
     }
 
     render() {
-        const { channel, onDelete, current, control, startChannelMonitoring, stopChannelMonitoring } = this.props;
-        const { editing } = this.state;
+        const { channel, onDelete, control, startChannelMonitoring, stopChannelMonitoring } = this.props;
         return (
             <div className={`panel panel-${channel.isSuccess ? "success" : "danger panel-danger--red"}`}>
-                <div className="panel-heading" onDoubleClick={this.handleEditingMode}>
-                    {editing ?
-                        <input className="form-control" value={current.name} onBlur={this.handleBlur} onChange={this.handleChange} />
-                        : channel.name}
-                </div>
+                <div className="panel-heading">{channel.name}</div>
                 <div className="panel-body">
                     <img
                         className="channel__screenshot img-rounded"
@@ -87,7 +63,7 @@ export default class Item extends Component {
                         }
                     </div>
                     <div className="btn-group pull-right">
-                        {editing ?
+                        {this.state.editing ?
                             <button className="btn btn-success btn-sm" onClick={this.handleBlur}>
                                 <i className="glyphicon glyphicon-ok" />
                             </button> : <button className="btn btn-info btn-sm" onClick={this.openModal}>

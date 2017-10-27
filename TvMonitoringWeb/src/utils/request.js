@@ -22,13 +22,13 @@ function parseJSON(response) {
  *
  * @return {object|undefined} Returns either the response, or throws an error
  */
-function checkStatus({ response }) {
-  if (response.isSuccess) {
-    return response
+function checkStatus(response) {
+  if (response.status >= 200 && response.status < 300) {
+    return response.response;
   }
 
-  const error = new Error(response.message)
-  error.response = response
+  const error = new Error(response);
+  error.response = response.response
   throw error
 }
 
@@ -49,5 +49,5 @@ export default function request(data) {
   })
     .map(checkStatus)
     .map(parseJSON)
-    .catch(error => toastr.error(error.message))
+    .catch(error => toastr.error(error.response.message));
 }
