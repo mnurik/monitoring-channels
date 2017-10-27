@@ -6,7 +6,7 @@ namespace TvMonitoring.Application.Interfaces
 {
     public interface IChannelRepositary
     {
-        void Save(Channel model); 
+        bool Save(Channel model); 
         List<Channel> GetAll();
         bool Delete(long id); 
         bool StartAll();

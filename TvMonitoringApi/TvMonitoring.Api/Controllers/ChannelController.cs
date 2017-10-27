@@ -1,5 +1,7 @@
 ﻿
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using TvMonitoring.Application.Interfaces;
 using TvMonitoring.Application.Models;
@@ -58,12 +60,29 @@ namespace TvMonitoring.Api.Controllers
         // GET api/channel/GetActives
         [Route("GetActives")]
         [HttpGet]
-        public ActionResult<List<Channel>> GetActives()
+        public ActionResult<List<Channel>> GetActives(bool withImage=true)
         {
-            return _channelService.GetActives();
+            Util.Util.service = _channelService;
+            return Util.Util.CheckChannel(withImage) ;
         }
 
-       
+        // GET api/channel/Delete
+        [Route("Delete")]
+        [HttpGet]
+        public ActionResult<bool> Delete(long id)
+        {
+           
+            return _channelService.Delete(id);
+        }
+
+        // GET api/channel/Save
+        [Route("Save")]
+        [HttpPost]
+        public ActionResult<bool> Save(Channel model)
+        {
+
+            return _channelService.Save(model);
+        }
 
     }
 }

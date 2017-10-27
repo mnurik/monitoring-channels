@@ -19,7 +19,7 @@ namespace TvMonitoring.Application.Services
             try
             {
                 var obj = _channelRepositary.GetAll();
-
+                obj.ForEach(x=>x.ScreenShotUrl = "/images/noImg.jpg");
                 return new ActionResult<List<Channel>>(obj);
 
             }
@@ -91,6 +91,23 @@ namespace TvMonitoring.Application.Services
             {
                 return new ActionResult<List<Channel>>(ex);
             }
+        }
+
+        public ActionResult<bool> Delete(long id)
+        {
+            try
+            {
+                return new ActionResult<bool>(_channelRepositary.Delete(id));
+            }
+            catch (Exception ex)
+            {
+                return new ActionResult<bool>(ex);
+            }
+        }
+
+        public ActionResult<bool> Save(Channel id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

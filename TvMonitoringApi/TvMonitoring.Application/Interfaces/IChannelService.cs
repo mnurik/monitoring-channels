@@ -12,8 +12,10 @@ namespace TvMonitoring.Application.Interfaces
         ActionResult<bool> Start(long id);
         ActionResult<bool> StopAll();
         ActionResult<bool> Stop(long id);
-        ActionResult<List<Channel>> GetActives();
+        ActionResult<List<Channel>> GetActives(); 
+        ActionResult<bool> Delete(long id);
+        ActionResult<bool> Save(Channel id);
 
-        
+
     }
 }

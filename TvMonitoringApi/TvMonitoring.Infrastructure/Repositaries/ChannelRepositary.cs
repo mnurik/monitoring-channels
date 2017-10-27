@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
+using System.Linq; 
 using AutoMapper;
-using TvMonitoring.Application.Interfaces;
-using TvMonitoring.Application.Models;
+using TvMonitoring.Application.Interfaces; 
 using TvMonitoring.Infrastructure.DataModels;
 using Channel = TvMonitoring.Application.Models.Channel;
 
@@ -20,9 +18,20 @@ namespace TvMonitoring.Infrastructure.Repositaries
             _mapper = mapper;
         }
 
-        public void Save(Channel model)
+        public bool Save(Channel model)
         {
-            throw new System.NotImplementedException();
+           var data= _mapper.Map<DataModels.Channel>(model);
+            if (data.Id==0)
+            {
+                _dataContext.Channels.InsertOnSubmit(data); 
+            }
+            else
+            {
+
+                
+            }
+            _dataContext.SubmitChanges();
+            return true;
         }
           
         public bool Delete(long id)
