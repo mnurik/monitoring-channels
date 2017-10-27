@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import channels from "./channels";
-import currentChannel from "./currentChannel";
+import current from "./current";
+import control from "./control";
 
-export default combineReducers({ channels, currentChannel })
+export default combineReducers({ channels, current, control })

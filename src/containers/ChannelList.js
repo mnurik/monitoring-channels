@@ -1,11 +1,27 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import List from "./../components/List";
-import ControlPanel from "./../components/ControlPanel";
 import * as actions from "./../actions/actions";
 import * as services from "./../utils/services";
 
 class ChannelList extends Component {
+
+    static propTypes = {
+        channels: PropTypes.array.isRequired,
+        current: PropTypes.object.isRequired,
+        replaceCurrent: PropTypes.func.isRequired,
+        editCurrentData: PropTypes.func.isRequired,
+        receiveChannels: PropTypes.func.isRequired,
+        destroyChannel: PropTypes.func.isRequired,
+        editChannel: PropTypes.func.isRequired,
+        addChannel: PropTypes.func.isRequired,
+        clearCurrent: PropTypes.func.isRequired,
+        startChannel: PropTypes.func.isRequired,
+        stopChannel: PropTypes.func.isRequired,
+        startAllChannels: PropTypes.func.isRequired,
+        stopAllChannels: PropTypes.func.isRequired
+    }
 
     componentDidMount() {
         services.fetchChannels()
@@ -28,51 +44,27 @@ class ChannelList extends Component {
 
     startChannelMonitoring = (id) => {
         services.startChannel(id)
-            .subscribe(() => this.props.startChannel())
+            .subscribe(() => this.props.startChannel(id))
     }
 
     stopChannelMonitoring = (id) => {
         services.stopChannel(id)
-            .subscribe(() => this.props.stopChannel())
-    }
-
-    startAllChannelsMonitoring = () => {
-        services.startAllChannels()
-            .subscribe(() => this.props.startAllChannels())
-    }
-
-    stopAllChannelsMonitoring = () => {
-        services.stopAllChannels()
-            .subscribe(() => this.props.stopAllChannels())
+            .subscribe(() => this.props.stopChannel(id))
     }
 
     render() {
-        return <div className="row">
-            <div className="col-sm-10">
-                <List
-                    channels={this.props.channels}
-                    current={this.props.current}
-                    onSave={this.handleSaveChannel}
-                    onDelete={this.deleteChannel}
-                    onReplace={this.props.replace}
-                    onEditData={this.props.editData}
-                    startChannelMonitoring={this.startChannelMonitoring}
-                    stopChannelMonitoring={this.stopChannelMonitoring}
-                />
-            </div>
-            <div className="col-sm-2">
-                <ControlPanel
-                    startAllChannelsMonitoring={this.startAllChannelsMonitoring}
-                    stopAllChannelsMonitoring={this.stopAllChannelsMonitoring}
-                />
-            </div>
-        </div>;
+        return <List
+            channels={this.props.channels}
+            current={this.props.current}
+            control={this.props.control}
+            onSave={this.handleSaveChannel}
+            onDelete={this.deleteChannel}
+            onReplace={this.props.replaceCurrent}
+            onEditData={this.props.editCurrentData}
+            startChannelMonitoring={this.startChannelMonitoring}
+            stopChannelMonitoring={this.stopChannelMonitoring}
+        />;
     }
 }
 
-const mapStateToProps = (state) => ({
-    channels: state.channels,
-    current: state.currentChannel
-});
-
-export default connect(mapStateToProps, { ...actions })(ChannelList);
+export default connect(state => state, { ...actions })(ChannelList);

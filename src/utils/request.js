@@ -47,6 +47,7 @@ export default function request(data) {
       return new XMLHttpRequest();
     }
   })
-    .map(checkStatus, error => toastr.error(error.message))
+    .map(checkStatus)
     .map(parseJSON)
+    .catch(error => toastr.error(error.message))
 }

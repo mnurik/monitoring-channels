@@ -10,7 +10,8 @@ export const editCurrentList = (payload) => ({ type: actionTypes.EDIT_CURRENT_CH
 export const replaceCurrent = (payload) => ({ type: actionTypes.REPLACE_CURRENT_CHANNEL, payload })
 export const clearCurrent = () => ({ type: actionTypes.CLEAR_CURRENT_CHANNEL })
 
-export const startChannel = () => ({ type: actionTypes.START_CHANNEL })
-export const stopChannel = () => ({ type: actionTypes.STOP_CHANNEL })
-export const startAllChannels = () => ({ type: actionTypes.START_ALL_CHANNELS })
+export const startChannel = (id) => ({ type: actionTypes.START_CHANNEL, payload: id })
+export const stopChannel = (id) => ({ type: actionTypes.STOP_CHANNEL, payload: id })
+export const startAllChannels = (payload) => ({ type: actionTypes.START_ALL_CHANNELS, payload })
 export const stopAllChannels = () => ({ type: actionTypes.STOP_ALL_CHANNELS })
+export const toggleImageMode = () => ({ type: actionTypes.TOGGLE_IMAGE_MODE })

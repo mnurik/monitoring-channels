@@ -3,16 +3,24 @@ import PropTypes from 'prop-types';
 import $ from "jquery";
 import './Item.css';
 
-export default class ChannelItem extends Component {
+export default class Item extends Component {
 
     static propTypes = {
-        channel: PropTypes.object.isRequired
+        channel: PropTypes.object.isRequired,
+        current: PropTypes.object.isRequired,
+        control: PropTypes.object.isRequired,
+        onReplace: PropTypes.func.isRequired,
+        onSave: PropTypes.func.isRequired,
+        onEditData: PropTypes.func.isRequired,
+        onVideoModalShow: PropTypes.func.isRequired,
+        startChannelMonitoring: PropTypes.func.isRequired,
+        stopChannelMonitoring: PropTypes.func.isRequired,
+        onDelete: PropTypes.func.isRequired
     }
 
     state = {
         editing: false,
-        videoSrc: "",
-        started: false
+        videoSrc: ""
     }
 
     handleEditingMode = () => {
@@ -43,18 +51,8 @@ export default class ChannelItem extends Component {
         this.props.onVideoModalShow(channel.videoUrl, channel.Name);
     }
 
-    handleStartMonitoring = () => {
-        this.setState({ started: true })
-        this.props.startChannelMonitoring(this.props.channel.id)
-    }
-
-    handleStopMonitoring = () => {
-        this.setState({ started: false })
-        this.props.stopChannelMonitoring(this.props.channel.id)
-    }
-
     render() {
-        const { channel, onDelete, onSave, current } = this.props;
+        const { channel, onDelete, current, control, startChannelMonitoring, stopChannelMonitoring } = this.props;
         const { editing } = this.state;
         return (
             <div className={`panel panel-${channel.isSuccess ? "success" : "danger panel-danger--red"}`}>
@@ -66,8 +64,8 @@ export default class ChannelItem extends Component {
                 <div className="panel-body">
                     <img
                         className="channel__screenshot img-rounded"
-                        src={'http://10.50.50.197:3169' + channel.screenShotUrl}
-                        alt={channel.screenShotUrl}
+                        src={channel.screenShotUrl}
+                        alt=""
                         onClick={this.handleVideoModalShow} />
                     <ul className="channel__list">
                         {channel.channelItems.map(channelItem => <li key={channelItem.id}>
@@ -79,18 +77,18 @@ export default class ChannelItem extends Component {
                 <div className="panel-footer clearfix">
                     <div className="btn-group pull-left">
                         {
-                            this.state.started || channel.active ?
-                                <button className="btn btn-danger btn-sm" onClick={this.handleStopMonitoring}>
+                            control.channels.includes(channel.id) ?
+                                <button className="btn btn-danger btn-sm" onClick={() => stopChannelMonitoring(channel.id)}>
                                     <i className="glyphicon glyphicon-stop" />
                                 </button>
-                                : <button className="btn btn-success btn-sm" onClick={this.handleStartMonitoring}>
+                                : <button className="btn btn-success btn-sm" onClick={() => startChannelMonitoring(channel.id)}>
                                     <i className="glyphicon glyphicon-play" />
                                 </button>
                         }
                     </div>
                     <div className="btn-group pull-right">
                         {editing ?
-                            <button className="btn btn-success btn-sm" onClick={onSave}>
+                            <button className="btn btn-success btn-sm" onClick={this.handleBlur}>
                                 <i className="glyphicon glyphicon-ok" />
                             </button> : <button className="btn btn-info btn-sm" onClick={this.openModal}>
                                 <i className="glyphicon glyphicon-pencil" />

@@ -13,7 +13,11 @@ export default (state = initialState, action) => {
       let cloneState = _.clone(state);
       action.payload.forEach(channel => {
         const index = _.findIndex(state, { id: channel.id });
-        cloneState.splice(index, 1, { ...channel, active: true });
+        if (~index) {
+          cloneState.splice(index, 1, channel);
+        } else {
+          cloneState.push(channel);
+        }
       });
       return cloneState;
     case actionTypes.DELETE_CHANNEL:

@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Item from "./Item";
 import VideoView from "./VideoView";
 import './List.css';
 
 class List extends Component {
+
+    static propTypes = {
+        channels: PropTypes.array.isRequired
+    }
+
     state = {
         videoSrc: "",
         name: ""
@@ -15,7 +21,7 @@ class List extends Component {
 
     render() {
         const { channels, ...rest } = this.props;
-        return (<div className="channels">
+        return <div className="channels">
             {
                 channels.map(channel =>
                     <Item
@@ -27,7 +33,7 @@ class List extends Component {
                 )
             }
             <VideoView videoSrc={this.state.videoSrc} name={this.state.name} />
-        </div>);
+        </div>;
     }
 };
 

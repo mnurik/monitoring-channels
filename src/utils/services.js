@@ -18,8 +18,8 @@ export const saveChannel = (data) =>
 export const deleteChannel = (id) =>
   request({ url: endPoints.DELETE_MONITORING + id, method: 'DELETE' })
 
-export const getActivesChannels = () =>
-  request({ url: endPoints.GET_ACTIVE_CHANNELS })
+export const getActivesChannels = (imageMode) =>
+  request({ url: endPoints.GET_ACTIVE_CHANNELS + imageMode })
 
 export const startAllChannels = () =>
   request({ url: endPoints.START_ALL_CHANNELS })

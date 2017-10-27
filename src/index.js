@@ -7,7 +7,7 @@ import './index.css'
 import configureStore from './store/configureStore'
 
 //  Bootstrap. Easy way including inside scripts, but we don't like ease ways :)
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import 'toastr/build/toastr.css'
 import jquery from 'jquery'
 window.$ = window.jQuery = jquery

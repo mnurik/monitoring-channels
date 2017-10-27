@@ -1,5 +1,5 @@
 .panel {
-    margin: 9px;
+    margin: 0.3% !important;
 }
 
 .panel-danger--red > .panel-heading {
@@ -15,7 +15,6 @@
     display: block;
     width: 160px;
     height: 100px;
-    /* height: 100px; */
     box-sizing: border-box;
 }
 
@@ -29,9 +28,9 @@
 }
 
 .channel__item--green {
-color: #5cb85c;
+    color: #5cb85c;
 }
 
 .channel__item--red {
-color: #d9534f;
+    color: #d9534f;
 }

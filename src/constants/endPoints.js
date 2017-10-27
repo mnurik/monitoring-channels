@@ -1,6 +1,6 @@
-export const CHANNEL_URL = 'http://10.50.50.197:3169/api/channel'
+export const CHANNEL_URL = 'api/channel'
 export const GET_CHANNELS = CHANNEL_URL + '/all'
-export const GET_ACTIVE_CHANNELS = CHANNEL_URL + '/getActives'
+export const GET_ACTIVE_CHANNELS = CHANNEL_URL + '/getActives?withImage='
 export const START_ALL_CHANNELS = CHANNEL_URL + '/startAll'
 export const STOP_ALL_CHANNELS = CHANNEL_URL + '/stopAll'
 export const START_CHANNEL = CHANNEL_URL + '/start?id='
