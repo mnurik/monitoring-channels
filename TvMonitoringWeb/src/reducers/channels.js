@@ -21,9 +21,9 @@ export default (state = initialState, action) => {
       action.payload.forEach(channel => {
         const index = _.findIndex(state, { id: channel.id });
         if (~index) {
-          cloneState.splice(index, 1, channel);
+          cloneState.splice(index, 1, channel); // Replace with channel from getActives
         } else {
-          cloneState.push(channel);
+          cloneState.push(channel); // Add new channel from getActives
         }
       });
       return cloneState;

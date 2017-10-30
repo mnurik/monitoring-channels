@@ -34,15 +34,18 @@ export default class Item extends Component {
 
     render() {
         const { channel, onDelete, control, startChannelMonitoring, stopChannelMonitoring } = this.props;
+        const includedChannel = control.channels.includes(channel.id);
         return (
-            <div className={`panel panel-${channel.isSuccess ? "success" : "danger panel-danger--red"}`}>
+            <div className={`panel panel-${
+                includedChannel ? channel.isSuccess ? "success" : "danger panel-danger--red" : "default"}`
+            }>
                 <div className="panel-heading">{channel.name}</div>
                 <div className="panel-body">
-                    <img
+                    {control.imageMode ? <img
                         className="channel__screenshot img-rounded"
                         src={channel.screenShotUrl}
                         alt=""
-                        onClick={this.handleVideoModalShow} />
+                        onClick={this.handleVideoModalShow} /> : null}
                     <ul className="channel__list">
                         {channel.channelItems.map(channelItem => <li key={channelItem.id}>
                             {`${channelItem.type === 2 ? "Giriş" : "Çıxış"} ${channelItem.ip}:${channelItem.port} `}
@@ -53,7 +56,7 @@ export default class Item extends Component {
                 <div className="panel-footer clearfix">
                     <div className="btn-group pull-left">
                         {
-                            control.channels.includes(channel.id) ?
+                            includedChannel ?
                                 <button className="btn btn-danger btn-sm" onClick={() => stopChannelMonitoring(channel.id)}>
                                     <i className="glyphicon glyphicon-stop" />
                                 </button>
@@ -69,9 +72,9 @@ export default class Item extends Component {
                             </button> : <button className="btn btn-info btn-sm" onClick={this.openModal}>
                                 <i className="glyphicon glyphicon-pencil" />
                             </button>}
-                        <button className="btn btn-danger btn-sm" onClick={() => { onDelete(channel.id) }}>
+                        {includedChannel ? null : <button className="btn btn-danger btn-sm" onClick={() => { onDelete(channel.id) }}>
                             <i className="glyphicon glyphicon-trash" />
-                        </button>
+                        </button>}
                     </div>
                 </div>
             </div>
