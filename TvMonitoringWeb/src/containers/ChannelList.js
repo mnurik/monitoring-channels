@@ -37,6 +37,7 @@ class ChannelList extends Component {
     }
 
     startChannelMonitoring = (id) => {
+        this.props.startChannelRequested(id);
         services.startChannel(id)
             .subscribe(() => this.props.startChannel(id))
     }

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './PanelBody.css';
 
 const PanelBody = ({ control, channel }) => <div className="panel-body">
   {control.imageMode ? <img
@@ -17,7 +18,7 @@ const PanelBody = ({ control, channel }) => <div className="panel-body">
 
 PanelBody.propTypes = {
   control: PropTypes.object.isRequired,
-  channel: PropTypes.array.isRequired
+  channel: PropTypes.object.isRequired
 }
 
 export default PanelBody;

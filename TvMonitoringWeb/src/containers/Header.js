@@ -38,8 +38,10 @@ class ChannelForm extends Component {
     }
 
     startAllChannelsMonitoring = () => {
+        const channelIds = this.props.channels.map(channel => channel.id)
+        this.props.startAllChannelsRequested(channelIds);
         services.startAllChannels()
-            .subscribe(() => this.props.startAllChannels(this.props.channels.map(channel => channel.id)))
+            .subscribe(() => this.props.startAllChannels(channelIds))
     }
 
     stopAllChannelsMonitoring = () => {

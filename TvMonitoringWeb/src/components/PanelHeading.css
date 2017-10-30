@@ -1,0 +1,4 @@
+.panel-danger--red > .panel-heading {
+    background-color: #d9534f !important;
+    color: #fff !important;
+}

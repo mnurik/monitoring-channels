@@ -21,7 +21,8 @@ export default class Item extends Component {
     }
 
     state = {
-        videoSrc: ""
+        videoSrc: "",
+        loader: false
     }
 
     openModal = () => {
@@ -38,16 +39,19 @@ export default class Item extends Component {
     render() {
         const { channel, control } = this.props;
         const includedChannel = control.channels.includes(channel.id);
+        const includedLoading = control.loading.includes(channel.id);
         return (
             <div className={`panel panel-${includedChannel ? channel.isSuccess ? "success" : "danger panel-danger--red" : "default"}`}>
                 <PanelHeading channel={channel} />
                 <PanelBody channel={channel} control={control} />
                 <PanelFooter channel={channel}
                     includedChannel={includedChannel}
+                    includedLoading={includedLoading}
                     openModal={this.openModal}
                     stopChannelMonitoring={this.props.stopChannelMonitoring}
                     startChannelMonitoring={this.props.startChannelMonitoring}
-                    onDelete={this.props.onDelete} />
+                    onDelete={this.props.onDelete}
+                />
             </div>
         );
     }

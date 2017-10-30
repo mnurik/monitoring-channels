@@ -15,7 +15,9 @@ export const clearCurrent = () => ({ type: actionTypes.CLEAR_CURRENT_CHANNEL })
 
 //  Start/Stop Action Creaters
 export const startChannel = (id) => ({ type: actionTypes.START_CHANNEL, payload: id })
+export const startChannelRequested = (id) => ({ type: actionTypes.START_CHANNEL_REQUESTED, payload: id })
 export const stopChannel = (id) => ({ type: actionTypes.STOP_CHANNEL, payload: id })
 export const startAllChannels = (payload) => ({ type: actionTypes.START_ALL_CHANNELS, payload })
+export const startAllChannelsRequested = (payload) => ({ type: actionTypes.START_ALL_CHANNELS_REQUESTED, payload })
 export const stopAllChannels = () => ({ type: actionTypes.STOP_ALL_CHANNELS })
 export const toggleImageMode = () => ({ type: actionTypes.TOGGLE_IMAGE_MODE })
