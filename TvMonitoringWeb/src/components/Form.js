@@ -12,6 +12,7 @@ const Form = (props) =>
       onChangeData={props.onChangeData}
       onChangeList={props.onChangeList}
       onCloseModal={props.onCloseModal}
+      deleteChannelItem={props.deleteChannelItem}
     />
     <ImageMode toggleImageMode={props.toggleImageMode} imageMode={props.imageMode} />
   </div>;
@@ -23,7 +24,8 @@ Form.propTypes = {
   onChangeList: PropTypes.func.isRequired,
   onCloseModal: PropTypes.func.isRequired,
   toggleImageMode: PropTypes.func.isRequired,
-  imageMode: PropTypes.bool.isRequired
+  imageMode: PropTypes.bool.isRequired,
+  deleteChannelItem: PropTypes.func.isRequired
 };
 
 export default Form;

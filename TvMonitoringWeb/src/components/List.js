@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Item from "./Item";
+import Channel from "./Channel";
 import VideoView from "./VideoView";
 import './List.css';
 
@@ -24,7 +24,7 @@ class List extends Component {
         return <div className="channels">
             {
                 channels.map(channel =>
-                    <Item
+                    <Channel
                         key={channel.id}
                         channel={channel}
                         {...rest}

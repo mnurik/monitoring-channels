@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './PanelBody.css';
+import { URL } from "./../constants/endPoints";
 
 const PanelBody = ({ control, channel }) => <div className="panel-body">
   {control.imageMode ? <img
     className="channel__screenshot img-rounded"
-    src={channel.screenShotUrl}
+    src={`${URL}${channel.screenShotUrl}`}
     alt=""
     onClick={this.handleVideoModalShow} /> : null}
   <ul className="channel__list">

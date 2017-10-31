@@ -4,9 +4,9 @@ import $ from "jquery";
 import PanelHeading from "./PanelHeading";
 import PanelBody from "./PanelBody";
 import PanelFooter from "./PanelFooter";
-import './Item.css';
+import './Channel.css';
 
-export default class Item extends Component {
+export default class Channel extends Component {
 
     static propTypes = {
         channel: PropTypes.object.isRequired,

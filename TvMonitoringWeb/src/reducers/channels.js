@@ -1,32 +1,31 @@
 import _ from 'lodash';
 import * as actionTypes from './../constants/actionTypes'
 
-export const initialState = []
+export const initialState = [];
+
+const mergeById = (arr, obj) => {
+  let clonedArr = _.clone(arr);
+  const index = _.findIndex(clonedArr, { id: obj.id });
+  if (~index) {
+    clonedArr.splice(index, 1, obj); // Replace with channel from getActives
+  } else {
+    clonedArr.push(obj); // Add new channel from getActives
+  }
+  return clonedArr;
+}
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOAD_CHANNELS:
       return action.payload
-    case actionTypes.ADD_CHANNEL:
-      return [...state, action.payload]
-    case actionTypes.EDIT_CHANNEL:
-      return state.map(channel => {
-        if (channel.id === action.payload.id) {
-          return action.payload;
-        }
-        return channel;
-      })
+    case actionTypes.SAVE_CHANNEL:
+      return mergeById(state, action.payload);
     case actionTypes.GET_ACTIVE_CHANNELS:
-      let cloneState = _.clone(state);
+      let clonedState = _.clone(state);
       action.payload.forEach(channel => {
-        const index = _.findIndex(state, { id: channel.id });
-        if (~index) {
-          cloneState.splice(index, 1, channel); // Replace with channel from getActives
-        } else {
-          cloneState.push(channel); // Add new channel from getActives
-        }
+        clonedState = mergeById(clonedState, action.payload);
       });
-      return cloneState;
+      return clonedState;
     case actionTypes.DELETE_CHANNEL:
       return state.filter(channel => channel.id !== action.payload.id)
     default:

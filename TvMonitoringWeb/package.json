@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "cross-env": "^5.1.1",
     "jquery": "^3.2.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -17,7 +18,7 @@
     "toastr": "^2.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cross-env NODE_ENV=development react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

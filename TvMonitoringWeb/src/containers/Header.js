@@ -7,12 +7,11 @@ import * as actions from "./../actions/actions";
 import * as services from "./../utils/services";
 import ControlPanel from "./../components/ControlPanel";
 
-class ChannelForm extends Component {
+class Header extends Component {
 
     static propTypes = {
         editCurrentList: PropTypes.func.isRequired,
-        editChannel: PropTypes.func.isRequired,
-        addChannel: PropTypes.func.isRequired,
+        saveChannel: PropTypes.func.isRequired,
         current: PropTypes.object.isRequired,
         channels: PropTypes.array.isRequired,
         editCurrentData: PropTypes.func.isRequired,
@@ -24,12 +23,7 @@ class ChannelForm extends Component {
     }
 
     handleSaveChannel = () => {
-        const { current } = this.props;
-        services.saveChannel(current)
-            .subscribe(response => {
-                if (current.id) this.props.editChannel(response)
-                else this.props.addChannel(response)
-            });
+        this.props.saveChannelRequest();
     }
 
     handleCloseModal = () => {
@@ -60,6 +54,7 @@ class ChannelForm extends Component {
                 onSave={this.handleSaveChannel}
                 onCloseModal={this.handleCloseModal}
                 toggleImageMode={this.props.toggleImageMode}
+                deleteChannelItem={this.props.deleteChannelItem}
             />
             <ControlPanel
                 startAllChannelsMonitoring={this.startAllChannelsMonitoring}
@@ -69,4 +64,4 @@ class ChannelForm extends Component {
     }
 };
 
-export default connect(state => state, { ...actions })(ChannelForm);
+export default connect(state => state, { ...actions })(Header);

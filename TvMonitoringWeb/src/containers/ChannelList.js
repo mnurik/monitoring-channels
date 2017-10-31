@@ -13,8 +13,7 @@ class ChannelList extends Component {
         editCurrentData: PropTypes.func.isRequired,
         receiveChannels: PropTypes.func.isRequired,
         destroyChannel: PropTypes.func.isRequired,
-        editChannel: PropTypes.func.isRequired,
-        addChannel: PropTypes.func.isRequired,
+        saveChannel: PropTypes.func.isRequired,
         startChannel: PropTypes.func.isRequired,
         stopChannel: PropTypes.func.isRequired,
         startAllChannels: PropTypes.func.isRequired,
@@ -32,8 +31,7 @@ class ChannelList extends Component {
     }
 
     handleSaveChannel = () => {
-        services.saveChannel(this.props.current)
-            .subscribe(response => { this.props.editChannel(response) });
+        this.props.saveChannelRequest();
     }
 
     startChannelMonitoring = (id) => {

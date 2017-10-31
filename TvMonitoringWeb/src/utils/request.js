@@ -41,12 +41,7 @@ function checkStatus(response) {
  * @return {object}           The response data
  */
 export default function request(data) {
-  return Observable.ajax({
-    ...data, crossDomain: true,
-    createXHR: function () {
-      return new XMLHttpRequest();
-    }
-  })
+  return Observable.ajax({ ...data, crossDomain: true })
     .map(checkStatus)
     .map(parseJSON)
     .catch(error => toastr.error(error.response.message));

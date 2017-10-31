@@ -22,7 +22,7 @@ const FormModal = (props) => <div id='channelModal' className='modal fade' role=
                   />
                 </div> */}
             <label className='control-label col-sm-1' htmlFor='name'>Adı:</label>
-            <div className='col-sm-5'>
+            <div className='col-sm-3'>
               <input
                 className='form-control'
                 id='name'
@@ -31,33 +31,42 @@ const FormModal = (props) => <div id='channelModal' className='modal fade' role=
                 onChange={({ target }) => props.onChangeData({ name: target.value })}
               />
             </div>
+            <label className='control-label col-sm-1' htmlFor='checkCount'>Təkrarla:</label>
+            <div className='col-sm-3'>
+              <input
+                className='form-control'
+                id='checkCount'
+                placeholder='Sabit dəyər 2'
+                onChange={({ target }) => props.onChangeData({ checkCount: target.value })}
+              />
+            </div>
             <label className='control-label col-sm-1' htmlFor='frequency'>Tezlik:</label>
-            <div className='col-sm-5'>
+            <div className='col-sm-3'>
               <input
                 className='form-control'
                 id='frequency'
-                value={props.currentChannel.frequency}
-                placeholder='Sabit dəyər 500 Hz'
+                placeholder='Sabit dəyər 200 Hz'
                 onChange={({ target }) => props.onChangeList({ frequency: target.value })}
               />
             </div>
           </div>
-          {props.currentChannel.channelItems.map((item, index) =>
+          <hr />
+          {props.currentChannel.channelItems.filter(item => !item.isDeleted).map((item, index) =>
             <div className='form-group' key={index}>
-              <label className='control-label col-sm-1' htmlFor='type'>Cixaris:</label>
-              <div className='col-sm-3'>
+              <label className='control-label col-sm-1' htmlFor='type'>Çıxarış:</label>
+              <div className='col-sm-2'>
                 <select
                   className='form-control'
                   id='type'
                   value={item.type}
                   onChange={({ target }) => props.onChangeList('type', target.value, index)}
                 >
-                  <option disabled>Secin</option>
-                  <option value='1'>Cixis</option>
-                  <option value='2'>Giris</option>
+                  <option disabled>Seçin</option>
+                  <option value='1'>Çıxış</option>
+                  <option value='2'>Giriş</option>
                 </select>
               </div>
-              <label className='control-label col-sm-1' htmlFor='ip'>Ip:</label>
+              <label className='control-label col-sm-1' htmlFor='ip'>İp:</label>
               <div className='col-sm-3'>
                 <input
                   className='form-control'
@@ -77,6 +86,9 @@ const FormModal = (props) => <div id='channelModal' className='modal fade' role=
                   onChange={({ target }) => props.onChangeList('port', target.value, index)}
                 />
               </div>
+              <button className="btn btn-danger" onClick={() => props.deleteChannelItem(index)}>
+                <i className="glyphicon glyphicon-trash" />
+              </button>
             </div>
           )}
         </form>
