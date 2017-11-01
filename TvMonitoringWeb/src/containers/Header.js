@@ -23,7 +23,9 @@ class Header extends Component {
     }
 
     handleSaveChannel = () => {
-        this.props.saveChannelRequest();
+        const current = { ...this.props.current, channelItems: this.props.current.channelItems.filter(item => item.ip && item.port) };
+        services.saveChannel(current)
+            .subscribe(this.props.saveChannel)
     }
 
     handleCloseModal = () => {

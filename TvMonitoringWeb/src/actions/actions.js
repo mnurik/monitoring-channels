@@ -3,7 +3,6 @@ import * as actionTypes from './../constants/actionTypes'
 //  Channel List Action Creaters
 export const receiveChannels = (payload) => ({ type: actionTypes.LOAD_CHANNELS, payload })
 export const destroyChannel = (id) => ({ type: actionTypes.DELETE_CHANNEL, payload: { id } })
-export const saveChannelRequest = (payload) => ({ type: actionTypes.SAVE_CHANNEL_REQUEST, payload })
 export const saveChannel = (payload) => ({ type: actionTypes.SAVE_CHANNEL, payload })
 export const getActives = (payload) => ({ type: actionTypes.GET_ACTIVE_CHANNELS, payload })
 
@@ -12,7 +11,6 @@ export const editCurrentData = (payload) => ({ type: actionTypes.EDIT_CURRENT_CH
 export const editCurrentList = (payload) => ({ type: actionTypes.EDIT_CURRENT_CHANNEL_IPLIST, payload })
 export const replaceCurrent = (payload) => ({ type: actionTypes.REPLACE_CURRENT_CHANNEL, payload })
 export const clearCurrent = () => ({ type: actionTypes.CLEAR_CURRENT_CHANNEL })
-export const deleteChannelItem = (index) => ({ type: actionTypes.DELETE_CHANNEL_ITEM, index })
 
 //  Start/Stop Action Creaters
 export const startChannel = (id) => ({ type: actionTypes.START_CHANNEL, payload: id })

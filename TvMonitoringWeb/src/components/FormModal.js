@@ -51,7 +51,7 @@ const FormModal = (props) => <div id='channelModal' className='modal fade' role=
             </div>
           </div>
           <hr />
-          {props.currentChannel.channelItems.filter(item => !item.isDeleted).map((item, index) =>
+          {props.currentChannel.channelItems.map((item, index) =>
             <div className='form-group' key={index}>
               <label className='control-label col-sm-1' htmlFor='type'>Çıxarış:</label>
               <div className='col-sm-2'>
@@ -86,9 +86,6 @@ const FormModal = (props) => <div id='channelModal' className='modal fade' role=
                   onChange={({ target }) => props.onChangeList('port', target.value, index)}
                 />
               </div>
-              <button className="btn btn-danger" onClick={() => props.deleteChannelItem(index)}>
-                <i className="glyphicon glyphicon-trash" />
-              </button>
             </div>
           )}
         </form>

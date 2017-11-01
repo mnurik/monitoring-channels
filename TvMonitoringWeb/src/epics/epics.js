@@ -4,12 +4,6 @@ import * as actionTypes from './../constants/actionTypes'
 import * as actions from './../actions/actions'
 import * as services from './../utils/services'
 
-const saveChannelEpic = (action$, store) => action$.ofType(actionTypes.SAVE_CHANNEL_REQUEST)
-  .mergeMap(action => {
-    return services.saveChannel(store.getState().current)
-      .map(actions.saveChannel);
-  });
-
 const startEpics = action$ => action$.ofType(actionTypes.START_CHANNEL, actionTypes.START_ALL_CHANNELS)
   .mapTo(actions.getActives([]));
 
@@ -30,4 +24,4 @@ const clearCurrentEpic = action$ => action$.ofType(actionTypes.SAVE_CHANNEL)
   .mapTo(actions.clearCurrent());
 
 
-export default combineEpics(startEpics, getActivesEpics, clearCurrentEpic, saveChannelEpic)
+export default combineEpics(startEpics, getActivesEpics, clearCurrentEpic)
