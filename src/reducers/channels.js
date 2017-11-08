@@ -1,7 +1,10 @@
 import _ from 'lodash';
 import * as actionTypes from './../constants/actionTypes'
 
-export const initialState = [];
+export const initialState = {
+  loading: false,
+  list: []
+};
 
 const mergeById = (arr, obj) => {
   let clonedArr = _.clone(arr);
@@ -17,17 +20,31 @@ const mergeById = (arr, obj) => {
 export default (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOAD_CHANNELS:
-      return action.payload
+      return { ...state, loading: true }
+    case actionTypes.RECEIVE_CHANNELS:
+      return { loading: false, list: action.payload }
     case actionTypes.SAVE_CHANNEL:
-      return mergeById(state, action.payload);
+      return {
+        loading: false,
+        list: mergeById(state.list, action.payload)
+      };
     case actionTypes.GET_ACTIVE_CHANNELS:
-      let clonedState = _.clone(state);
+      if (!Array.isArray(action.payload)) {
+        return state;
+      }
+      let clonedState = state.list;
       action.payload.forEach(channel => {
-        clonedState = mergeById(clonedState, action.payload);
+        clonedState = mergeById(clonedState, channel);
       });
-      return clonedState;
+      return {
+        loading: false,
+        list: clonedState
+      };
     case actionTypes.DELETE_CHANNEL:
-      return state.filter(channel => channel.id !== action.payload.id)
+      return {
+        loading: false,
+        list: state.list.filter(channel => channel.id !== action.payload.id)
+      }
     default:
       return state
   }

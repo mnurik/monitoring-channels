@@ -1,14 +1,17 @@
 import * as actionTypes from './../constants/actionTypes'
 
 //  Channel List Action Creaters
-export const receiveChannels = (payload) => ({ type: actionTypes.LOAD_CHANNELS, payload })
+export const loadChannels = () => ({ type: actionTypes.LOAD_CHANNELS })
+export const receiveChannels = (payload) => ({ type: actionTypes.RECEIVE_CHANNELS, payload })
 export const destroyChannel = (id) => ({ type: actionTypes.DELETE_CHANNEL, payload: { id } })
 export const saveChannel = (payload) => ({ type: actionTypes.SAVE_CHANNEL, payload })
 export const getActives = (payload) => ({ type: actionTypes.GET_ACTIVE_CHANNELS, payload })
 
 //  Current Channel Action Creaters
 export const editCurrentData = (payload) => ({ type: actionTypes.EDIT_CURRENT_CHANNEL, payload })
-export const editCurrentList = (payload) => ({ type: actionTypes.EDIT_CURRENT_CHANNEL_IPLIST, payload })
+export const onChangeChannelItem = (payload) => ({ type: actionTypes.EDIT_CURRENT_CHANNEL_IPLIST, payload })
+export const deleteChannelItem = (index) => ({ type: actionTypes.DELETE_CURRENT_CHANNEL_ITEM, index })
+export const addChannelItem = () => ({ type: actionTypes.ADD_CURRENT_CHANNEL_ITEM })
 export const replaceCurrent = (payload) => ({ type: actionTypes.REPLACE_CURRENT_CHANNEL, payload })
 export const clearCurrent = () => ({ type: actionTypes.CLEAR_CURRENT_CHANNEL })
 

@@ -16,6 +16,7 @@
     height: 61px;
     overflow-x: hidden;
     overflow-y: scroll;
+    padding-right: 10px;
 }
 
 .channel__item--green {
@@ -28,4 +29,21 @@
 
 .panel-default .channel__item--red {
     display: none;
+}
+
+.channel__list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.channel__list::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: transparent;
+}
+
+.channel__list::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #888;
+}
+.channel__list::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(100,100,100,0.4); 
 }

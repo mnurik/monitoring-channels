@@ -3,11 +3,18 @@ import * as actions from "./actions";
 
 describe("channel list actions", () => {
     it("editCurrentName should create LOAD_CHANNELS action", () => {
+        expect(actions.loadChannels()).toEqual({
+            type: actionTypes.LOAD_CHANNELS
+        });
+    });
+
+    it("editCurrentName should create RECEIVE_CHANNELS action", () => {
         expect(actions.receiveChannels([
             { id: 1, name: "channel 1" },
             { id: 2, name: "channel 2" }
-        ])).toEqual({
-            type: actionTypes.LOAD_CHANNELS,
+        ]
+        )).toEqual({
+            type: actionTypes.RECEIVE_CHANNELS,
             payload: [
                 { id: 1, name: "channel 1" },
                 { id: 2, name: "channel 2" }
@@ -22,15 +29,9 @@ describe("channel list actions", () => {
         });
     });
 
-    it("replaceCurrent should create ADD_CHANNEL action", () => {
-        expect(actions.addChannel({ id: 5, name: "channel 5" })).toEqual({
-            type: actionTypes.ADD_CHANNEL, payload: { id: 5, name: "channel 5" }
-        });
-    });
-
-    it("clearCurrent should create EDIT_CHANNEL action", () => {
-        expect(actions.editChannel({ id: 5, name: "channel _5" })).toEqual({
-            type: actionTypes.EDIT_CHANNEL, payload: { id: 5, name: "channel _5" }
+    it("replaceCurrent should create SAVE_CHANNEL action", () => {
+        expect(actions.saveChannel({ id: 5, name: "channel 5" })).toEqual({
+            type: actionTypes.SAVE_CHANNEL, payload: { id: 5, name: "channel 5" }
         });
     });
 });
@@ -43,7 +44,7 @@ describe("current channel actions", () => {
     });
 
     it("editCurrentList should create EDIT_CURRENT_CHANNEL_IPLIST action", () => {
-        expect(actions.editCurrentList({ index: 1, key: "ip", value: "10.10.11.109" })).toEqual({
+        expect(actions.onChangeChannelItem({ index: 1, key: "ip", value: "10.10.11.109" })).toEqual({
             type: actionTypes.EDIT_CURRENT_CHANNEL_IPLIST, payload: { index: 1, key: "ip", value: "10.10.11.109" }
         });
     });

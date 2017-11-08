@@ -1,0 +1,11 @@
+@media screen and (max-width: 480px) {
+  .channel__add__container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .channel__add__button {
+    float: none !important;
+  }
+}

@@ -2,39 +2,36 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import $ from "jquery";
-import Form from "./../components/Form";
+import FormModal from "./../components/FormModal";
 import * as actions from "./../actions/actions";
 import * as services from "./../utils/services";
 import ControlPanel from "./../components/ControlPanel";
+import './Header.css';
 
 class Header extends Component {
 
     static propTypes = {
-        editCurrentList: PropTypes.func.isRequired,
+        onChangeChannelItem: PropTypes.func.isRequired,
         saveChannel: PropTypes.func.isRequired,
         current: PropTypes.object.isRequired,
-        channels: PropTypes.array.isRequired,
+        channels: PropTypes.object.isRequired,
         editCurrentData: PropTypes.func.isRequired,
         toggleImageMode: PropTypes.func.isRequired
     }
 
-    handleChangeList = (key, value, index) => {
-        this.props.editCurrentList({ key, value, index });
+    componentDidMount() {
+        $('#channelModal').on('hidden.bs.modal', () => {
+            this.props.clearCurrent();
+        })
     }
 
     handleSaveChannel = () => {
-        const current = { ...this.props.current, channelItems: this.props.current.channelItems.filter(item => item.ip && item.port) };
-        services.saveChannel(current)
+        services.saveChannel(this.props.current)
             .subscribe(this.props.saveChannel)
     }
 
-    handleCloseModal = () => {
-        $('#channelModal').modal('hide');
-        this.props.clearCurrent();
-    }
-
     startAllChannelsMonitoring = () => {
-        const channelIds = this.props.channels.map(channel => channel.id)
+        const channelIds = this.props.channels.list.map(channel => channel.id)
         this.props.startAllChannelsRequested(channelIds);
         services.startAllChannels()
             .subscribe(() => this.props.startAllChannels(channelIds))
@@ -46,23 +43,23 @@ class Header extends Component {
     }
 
     render() {
-        return <div className="row">
-            <Form
+        return <header className="margin-b-10">
+            <FormModal
                 currentChannel={this.props.current}
-                imageMode={this.props.control.imageMode}
                 onChangeData={this.props.editCurrentData}
-                onChangeList={this.handleChangeList}
+                onChangeChannelItem={this.props.onChangeChannelItem}
+                onDeleteChannelItem={this.props.deleteChannelItem}
+                onAddChannelItem={this.props.addChannelItem}
                 onChangeCurrent={this.handleChange}
                 onSave={this.handleSaveChannel}
-                onCloseModal={this.handleCloseModal}
-                toggleImageMode={this.props.toggleImageMode}
-                deleteChannelItem={this.props.deleteChannelItem}
             />
             <ControlPanel
+                imageMode={this.props.control.imageMode}
+                toggleImageMode={this.props.toggleImageMode}
                 startAllChannelsMonitoring={this.startAllChannelsMonitoring}
                 stopAllChannelsMonitoring={this.stopAllChannelsMonitoring}
             />
-        </div>;
+        </header>;
     }
 };
 

@@ -1,5 +1,6 @@
-export const URL = process.env.NODE_ENV === 'development' ? 'http://10.50.50.197:3169/' : '/';
-export const CHANNEL_URL = URL + 'api/channel';
+import { URL } from "./../config";
+
+export const CHANNEL_URL = URL + '/api/channel';
 export const GET_CHANNELS = CHANNEL_URL + '/all'
 export const GET_ACTIVE_CHANNELS = CHANNEL_URL + '/getActives?withImage='
 export const START_ALL_CHANNELS = CHANNEL_URL + '/startAll'

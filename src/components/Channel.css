@@ -1,5 +1,67 @@
 .panel {
-    margin: 0.3vw !important;
-    text-align: center;
-    width: 171px;
+    margin: 0.5em;
+  min-width: 40px;
+  flex-grow: 1;
+  flex-basis: 160px;
+  max-width: 100%;
+}
+@media (min-width: 360px) {
+  .panel {
+    max-width: 50%;
+  }
+}
+@media (min-width: 540px) {
+  .panel {
+    max-width: 33.33333%;
+  }
+}
+@media (min-width: 720px) {
+  .panel {
+    max-width: 25%;
+  }
+}
+@media (min-width: 900px) {
+  .panel {
+    max-width: 20%;
+  }
+}
+@media (min-width: 1080px) {
+  .panel {
+    max-width: 16.66667%;
+  }
+}
+@media (min-width: 1260px) {
+  .panel {
+    max-width: 14.28571%;
+  }
+}
+@media (min-width: 1440px) {
+  .panel {
+    max-width: 12.5%;
+  }
+}
+@media (min-width: 1620px) {
+  .panel {
+    max-width: 11.11111%;
+  }
+}
+@media (min-width: 1800px) {
+  .panel {
+    max-width: 10%;
+  }
+}
+@media (min-width: 1980px) {
+  .panel {
+    max-width: 9.09091%;
+  }
+}
+@media (min-width: 2160px) {
+  .panel {
+    max-width: 8.33333%;
+  }
+}
+@media (min-width: 2340px) {
+  .panel {
+    max-width: 7.69231%;
+  }
 }

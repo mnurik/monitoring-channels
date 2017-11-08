@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 import { connect } from "react-redux";
 import List from "./../components/List";
+import Loading from "./../components/Loading";
 import * as actions from "./../actions/actions";
 import * as services from "./../utils/services";
 
 class ChannelList extends Component {
 
     static propTypes = {
-        channels: PropTypes.array.isRequired,
+        channels: PropTypes.object.isRequired,
         replaceCurrent: PropTypes.func.isRequired,
         editCurrentData: PropTypes.func.isRequired,
         receiveChannels: PropTypes.func.isRequired,
@@ -20,9 +22,13 @@ class ChannelList extends Component {
         stopAllChannels: PropTypes.func.isRequired
     }
 
+    shouldComponentUpdate(prevState) {
+        /** Don't rerender this component if current state is the same */
+        return _.isEqual(prevState.current, this.props.current);
+    }
+
     componentDidMount() {
-        services.fetchChannels()
-            .subscribe(response => this.props.receiveChannels(response));
+        this.props.loadChannels();
     }
 
     deleteChannel = (id) => {
@@ -46,8 +52,8 @@ class ChannelList extends Component {
     }
 
     render() {
-        return <List
-            channels={this.props.channels}
+        return this.props.channels.loading ? <Loading /> : <List
+            channels={this.props.channels.list}
             current={this.props.current}
             control={this.props.control}
             onSave={this.handleSaveChannel}
@@ -56,7 +62,7 @@ class ChannelList extends Component {
             onEditData={this.props.editCurrentData}
             startChannelMonitoring={this.startChannelMonitoring}
             stopChannelMonitoring={this.stopChannelMonitoring}
-        />;
+        />
     }
 }
 

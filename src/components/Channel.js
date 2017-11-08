@@ -33,24 +33,30 @@ export default class Channel extends Component {
     handleVideoModalShow = () => {
         const { channel } = this.props;
         $('#videoModal').modal('show');
-        this.props.onVideoModalShow(channel.videoUrl, channel.Name);
+        this.props.onVideoModalShow(channel.channelItems[0].ip + ':' + channel.channelItems[0].port, channel.name);
+    }
+
+    handleDelete = (id) => {
+        if (window.confirm('Silmək istədiyinizə əminsiniz?')) {
+            this.props.onDelete(id)
+        }
     }
 
     render() {
         const { channel, control } = this.props;
-        const includedChannel = control.channels.includes(channel.id);
-        const includedLoading = control.loading.includes(channel.id);
+        const includedChannel = Boolean(~control.channels.indexOf(channel.id));
+        const includedLoading = Boolean(~control.loading.indexOf(channel.id));
         return (
             <div className={`panel panel-${includedChannel ? channel.isSuccess ? "success" : "danger panel-danger--red" : "default"}`}>
                 <PanelHeading channel={channel} />
-                <PanelBody channel={channel} control={control} />
+                <PanelBody channel={channel} control={control} onClick={this.handleVideoModalShow} />
                 <PanelFooter channel={channel}
                     includedChannel={includedChannel}
                     includedLoading={includedLoading}
                     openModal={this.openModal}
                     stopChannelMonitoring={this.props.stopChannelMonitoring}
                     startChannelMonitoring={this.props.startChannelMonitoring}
-                    onDelete={this.props.onDelete}
+                    onDelete={this.handleDelete}
                 />
             </div>
         );

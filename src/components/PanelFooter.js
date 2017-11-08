@@ -10,19 +10,19 @@ const PanelFooter = ({ channel, includedChannel, includedLoading, openModal, sto
         <button className="btn btn-danger btn-sm" onClick={() => stopChannelMonitoring(channel.id)}>
           <i className="glyphicon glyphicon-stop" />
         </button>
-        : (includedLoading ? <Loading /> : <button className="btn btn-success btn-sm" onClick={() => startChannelMonitoring(channel.id)}>
+        : (includedLoading ? <Loading className="loading__circle--sm" /> : <button className="btn btn-success btn-sm" onClick={() => startChannelMonitoring(channel.id)}>
           <i className="glyphicon glyphicon-play" />
         </button>)
     }
   </div>
-  <div className="btn-group pull-right">
+  {includedChannel ? null : <div className="btn-group pull-right">
     <button className="btn btn-info btn-sm" onClick={openModal}>
       <i className="glyphicon glyphicon-pencil" />
     </button>
-    {includedChannel ? null : <button className="btn btn-danger btn-sm" onClick={() => { onDelete(channel.id) }}>
+    <button className="btn btn-danger btn-sm" onClick={() => { onDelete(channel.id) }}>
       <i className="glyphicon glyphicon-trash" />
-    </button>}
-  </div>
+    </button>
+  </div>}
 </div>;
 
 PanelFooter.propTypes = {

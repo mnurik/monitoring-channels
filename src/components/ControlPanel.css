@@ -1,3 +1,15 @@
+  .controlPanel-container {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: 480px) {
+      .controlPanel-container {
+        width: 100%;
+      }
+  }
+
   .checkbox-container input[type=checkbox] {
     display: none;
   }

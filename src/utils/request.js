@@ -1,16 +1,16 @@
-import toastr from 'toastr'
 import { Observable } from 'rxjs'
 
 /**
- * Parses the JSON returned by a network request
+ * gets body returned by a network request
  *
  * @param  {object} response A response from a network request
  *
- * @return {object}          The parsed JSON from the request
+ * @return {object}          body from the request
  */
-function parseJSON(response) {
-  if (response.status === 204 || response.status === 205) {
-    return null
+function getBody(response) {
+  if (response.result === null) {
+    const error = new Error(response.message);
+    throw error
   }
   return response.result
 }
@@ -28,7 +28,6 @@ function checkStatus(response) {
   }
 
   const error = new Error(response);
-  error.response = response.response
   throw error
 }
 
@@ -43,6 +42,6 @@ function checkStatus(response) {
 export default function request(data) {
   return Observable.ajax({ ...data, crossDomain: true })
     .map(checkStatus)
-    .map(parseJSON)
-    .catch(error => toastr.error(error.response.message));
+    .map(getBody)
+  // .catch(error => console.error(error.message));
 }

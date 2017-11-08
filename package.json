@@ -5,6 +5,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "cross-env": "^5.1.1",
+    "inputmask": "^3.3.10",
     "jquery": "^3.2.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -14,13 +15,21 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-observable": "^0.16.0",
     "rxjs": "^5.5.1",
-    "tether": "^1.4.0",
-    "toastr": "^2.1.2"
+    "tether": "^1.4.0"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "eslint": "^4.10.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.4.0",
+    "eslint-plugin-standard": "^3.0.1"
   }
 }

@@ -37,6 +37,7 @@ export default (state = initialState, action) => {
     case actionTypes.STOP_ALL_CHANNELS:
       return {
         ...state,
+        loading: [],
         channels: initialState.channels
       };
     case actionTypes.TOGGLE_IMAGE_MODE:

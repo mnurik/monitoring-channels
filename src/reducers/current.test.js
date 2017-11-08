@@ -6,9 +6,12 @@ describe("currentChannels reducer test", () => {
     afterAll(() => {
         it("should never mutate initialState", () => {
             expect(initialState).toEqual({
-                Id: null,
-                Name: "",
-                IpList: [{ Id: null, Ip: "", Port: "", Type: "", Hz: "" }]
+                id: null,
+                group: '',
+                checkCount: 2,
+                frequency: 200,
+                name: '',
+                channelItems: [{ id: null, ip: '', port: '', type: 1 }]
             });
         });
     });
@@ -27,10 +30,19 @@ describe("currentChannels reducer test", () => {
             { channelItems: [{ ip: "10.10.10.10" }] },
             { type: actionTypes.EDIT_CURRENT_CHANNEL_IPLIST, payload: { index: 0, key: "ip", value: "11.10.10.10" } }
         )).toEqual({
-            channelItems: [{ ip: "11.10.10.10" },
-            { "hz": "", "id": null, "ip": "", "port": "", "type": "" }]
+            channelItems: [{ ip: "11.10.10.10" }]
         });
+    });
 
+    it("should handle ADD_CURRENT_CHANNEL_ITEM", () => {
+        expect(reducer(
+            { channelItems: [] },
+            { type: actionTypes.ADD_CURRENT_CHANNEL_ITEM })
+        ).toEqual({
+            channelItems: [{
+                id: null, ip: '', port: '', type: 1
+            }]
+        })
     });
 
     it("should handle REPLACE_CURRENT_CHANNEL state", () => {

@@ -7,9 +7,26 @@ describe("currentChannels reducer test", () => {
     expect(reducer(undefined, {})).toEqual(initialState);
   });
 
+  it("should handle START_CHANNEL_REQUESTED", () => {
+    expect(reducer({
+      imageMode: "",
+      loading: [],
+      channels: []
+    }, {
+        type: actionTypes.START_CHANNEL_REQUESTED,
+        payload: 1
+      }))
+      .toEqual({
+        imageMode: "",
+        loading: [1],
+        channels: []
+      });
+  });
+
   it("should handle START_CHANNEL", () => {
     expect(reducer({
       imageMode: "",
+      loading: [],
       channels: []
     }, {
         type: actionTypes.START_CHANNEL,
@@ -17,6 +34,7 @@ describe("currentChannels reducer test", () => {
       }))
       .toEqual({
         imageMode: "",
+        loading: [],
         channels: [1]
       });
   });
@@ -38,6 +56,7 @@ describe("currentChannels reducer test", () => {
   it("should handle START_ALL_CHANNELS", () => {
     expect(reducer({
       imageMode: "",
+      loading: [],
       channels: []
     }, {
         type: actionTypes.START_ALL_CHANNELS,
@@ -45,7 +64,24 @@ describe("currentChannels reducer test", () => {
       }))
       .toEqual({
         imageMode: "",
+        loading: [],
         channels: [1, 2, 3, 4]
+      });
+  });
+
+  it("should handle START_ALL_CHANNELS_REQUESTED", () => {
+    expect(reducer({
+      imageMode: "",
+      loading: [],
+      channels: []
+    }, {
+        type: actionTypes.START_ALL_CHANNELS_REQUESTED,
+        payload: [1, 2, 3, 4]
+      }))
+      .toEqual({
+        imageMode: "",
+        loading: [1, 2, 3, 4],
+        channels: []
       });
   });
 
