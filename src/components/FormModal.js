@@ -23,12 +23,16 @@ export default class FormModal extends Component {
     onDeleteChannelItem: PropTypes.func.isRequired
   }
 
-  componentDidMount() {
+  inputMask() {
     Inputmask("9{1,3}.9{1,3}.9{1,3}.9{1,3}").mask(document.querySelectorAll('input[name="ip"]'));
   }
 
-  componentWillUpdate() {
-    Inputmask("9{1,3}.9{1,3}.9{1,3}.9{1,3}").mask(document.querySelectorAll('input[name="ip"]'));
+  componentDidMount() {
+    this.inputMask();
+  }
+
+  componentDidUpdate() {
+    this.inputMask();
   }
 
   render() {

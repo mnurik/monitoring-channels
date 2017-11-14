@@ -1,7 +1,8 @@
 {
-  "name": "ajax-redux",
+  "name": "TV Monitoring",
   "version": "0.1.0",
   "private": true,
+  "author": "Nurlan Mirzayev",
   "dependencies": {
     "bootstrap": "^3.3.7",
     "cross-env": "^5.1.1",
